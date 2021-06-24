@@ -1,0 +1,18 @@
+﻿@model Arkiva.Models.Dokument
+
+@{
+    ViewBag.Title = "Fshi Dokumentin e perzgjedhur: " + Model.FileName;
+    ViewBag.Message = "Kujdes! Ju po fshini dokumentin e Subjektit " + Model.Inspektim.Subjekt.Emri + " te cilit i perket institucionit Inspektues Shteterore " + Model.Inspektim.Emri + ". Deshironi te procedoni me zgjedhjen?";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4 style="color: red">@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color" align="right">
+        <input type="submit" value="Fshi" class="btn btn-danger" />
+        @Html.ActionLink("Anulo", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning" })
+    </div>
+}

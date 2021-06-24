@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Arkiva.Models.Subjekt>
+
+@{
+    ViewBag.Title = "Subjektet e Regjistruara ";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    <div align="right">
+        @if (Model.Count() == 0)
+        {
+            ViewBag.Total = "Nuk ka asnje subjekt te regjistruar";
+        }
+        else
+        {
+            ViewBag.Total = "Nr total i subjekteve: " + Model.Count();
+        }
+        <h4>@ViewBag.Total</h4>
+        @Html.ActionLink("Krijo Subjekt", "Create", null, new { @class = "btn btn-success" })
+    </div>
+    @using (Html.BeginForm("Index", "Subjekts", FormMethod.Get))
+    {
+    <p>
+        @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Subjektin" }) <br />
+        <input type="submit" value="Kerko" class="btn btn-info" />
+        <div class="text-danger">
+            @ViewBag.Message
+        </div> <br />
+    </p>
+}
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Emri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Assets/folder.png" style="width: 40px; height: 40px" />
+                    @Html.ActionLink(item.Emri, "Index", "Inspektims", new { SubjektId = item.Id }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Edito", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Permbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+        </div>
+    </div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Arkiva.Models.Inspektim>
+@{
+    ViewBag.Title = "Inspektime";
+}
+
+<h2>Inspektime</h2>
+
+<p>
+    <div align="right">
+        @Html.ActionLink("Krijo Inspektim", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Shko te Subjektet", "Index", "Subjekts", null, new { @class = "btn btn-warning" })
+    </div>
+    @using (Html.BeginForm("Index", "Inspektims", FormMethod.Get))
+    {
+        <div>
+            <p>
+                @Html.Hidden("SubjektId")
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Inspektimin" }) <br />
+                <input type="submit" value="Kerko" class="btn btn-info" />
+                <div class="text-danger">
+                    @ViewBag.Message
+                </div> <br />
+
+            </p>
+        </div>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Emri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Assets/folder.png" style="width:30px; height:30px" />
+                @Html.ActionLink(item.Emri, "Index", "Dokuments", new { InspektimId = item.Id }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td align="right">
+                @Html.ActionLink("Edito", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Permbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
