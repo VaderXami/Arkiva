@@ -41,7 +41,7 @@ namespace Arkiva.Controllers
             {
                 nb += 1;
             }
-            if (nb > 1)
+            if (nb > 0)
             {
                 ViewBag.No = "Nr total i dokumenteve: " + nb;
             }

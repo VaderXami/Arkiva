@@ -5,11 +5,12 @@
 }
 
 <h2>@ViewBag.Title</h2>
+
 <div align="right">
     @Html.ActionLink("Edito", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
     @Html.ActionLink("Shko te Subjektet", "Index", null, new { @class = "btn btn-warning" })
 </div>
-
+@Html.ActionLink("Shkarko Zip File", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -32,20 +33,19 @@
         <dt>
             @Html.DisplayNameFor(model => model.Inspektime)
         </dt>
-        <table class="table">
-            @foreach (var item in Model.Inspektime)
-            {
-                <tr>
-                    <td>
-                        <img src="~/Assets/folder.png" style="width: 30px; height: 30px" />
-                        @Html.DisplayFor(modelItem => item.Emri)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Data)
-                    </td>
-                </tr>
-            }
-        </table>
-
     </dl>
+    <table class="table">
+        @foreach (var item in Model.Inspektime)
+        {
+            <tr>
+                <td>
+                    <img src="~/Assets/folder.png" style="width: 30px; height: 30px" />
+                    @Html.DisplayFor(modelItem => item.Emri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+            </tr>
+        }
+    </table>
 </div>

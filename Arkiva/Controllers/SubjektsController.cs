@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -74,6 +76,31 @@ namespace Arkiva.Controllers
             }
 
             return View(subjekt);
+        }
+
+        public ActionResult DownloadZipFile(int id)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    var inspektime = db.Subjekt.Find(id).Inspektime;
+                    foreach (var inspektim in inspektime )
+                    {
+                        var dokumente = db.Inspektim.Find(inspektim.Id).Dokumente;
+                        foreach (var dokument in dokumente)
+                        {
+                            var file = archive.CreateEntry(inspektim.Emri + "/" + dokument.FileName.ToString());
+                            using (var stream = file.Open())
+                            {
+                                stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);
+                            }
+                        }
+                    }
+                }
+                var subjekt = db.Subjekt.Find(id);
+                return File(memoryStream.ToArray(), "application/zip", subjekt.Emri + ".zip");
+            }
         }
 
         // GET: Subjekts/Edit/5
