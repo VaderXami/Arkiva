@@ -7,6 +7,15 @@
 
 <p>
     <div align="right">
+        @if (Model.Count() == 0)
+        {
+            ViewBag.Total = "Nuk ka asnje inspektim te kryer.";
+        }
+        else
+        {
+            ViewBag.Total = "Nr total i inspektimeve: " + Model.Count();
+        }
+        <h4>@ViewBag.Total</h4>
         @Html.ActionLink("Krijo Inspektim", "Create", null, new { @class = "btn btn-success" })
         @Html.ActionLink("Shko te Subjektet", "Index", "Subjekts", null, new { @class = "btn btn-warning" })
     </div>

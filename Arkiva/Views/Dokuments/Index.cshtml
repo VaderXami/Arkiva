@@ -2,14 +2,29 @@
 @{
     ViewBag.Title = "Dokumente";
     ViewBag.Url = Context.Request.Url;
+    ArkivaDBContext db = new ArkivaDBContext();
+    var id = Context.Request.Url;
+    string[] str = id.ToString().Split('=');
+
+
+    foreach (var item in Model)
+    {
+        if (item.InspektimId == str[1].AsInt())
+        {
+            var idd = item.Inspektim.SubjektId;
+            ViewBag.Id = idd;
+        }
+    }
+
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
     <div align="right">
+        <h4>@ViewBag.No</h4>
         @Html.ActionLink("Ngarko Dokument", "Create", new { url = ViewBag.Url }, new { @class = "btn btn-success" })
-        @Html.ActionLink("Shko te Inspektimet", "Index", "Subjekts", null, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Shko te Inspektimet", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, new { @class = "btn btn-warning" })
     </div>
     @using (Html.BeginForm("Index", "Dokuments", FormMethod.Get))
     {
@@ -31,61 +46,61 @@
             @Html.DisplayNameFor(model => model.Inspektim.Emri)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Data)
+            @Html.DisplayNameFor(model => model.FileName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FileName)
+            @Html.DisplayNameFor(model => model.Data)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inspektim.Emri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @{ if (item.FileName.Contains(".pdf"))
-                    {
-                        <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
-                    }
-                    if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
-                    {
-                        <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
-                    }
-                    if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
-                    {
-                        <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
-                    }
-                    if (item.FileName.Contains(".xlsx"))
-                    {
-                        <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
-                    }
-                }
-                @Html.DisplayFor(modelItem => item.FileName)
-            </td>
-            <td align="right">
-                @{ if (item.FileName.Contains(".pdf"))
-                    {
-                        @Html.ActionLink("Shiko", "PreviewFilePDF", new { id = item.Id }, new { @class="btn btn-info"})
-                    }
-                    if (item.FileName.Contains(".jpg"))
-                    {
-                        @Html.ActionLink("Shiko", "PreviewFileJpg", new { id = item.Id }, new { @class = "btn btn-info" })
-                    }
-                    if (item.FileName.Contains(".png"))
-                    {
-                        @Html.ActionLink("Shiko", "PreviewFilePNG", new { id = item.Id }, new { @class = "btn btn-info" })
-                    }
-                }
-                @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Inspektim.Emri)
+    </td>
+    <td>
+        @{ if (item.FileName.Contains(".pdf"))
+            {
+                <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
+            }
+            if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+            {
+                <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
+            }
+            if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
+            {
+                <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
+            }
+            if (item.FileName.Contains(".xlsx"))
+            {
+                <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+            }
+        }
+        @Html.DisplayFor(modelItem => item.FileName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
+    </td>
+    <td align="right">
+        @{ if (item.FileName.Contains(".pdf"))
+            {
+                @Html.ActionLink("Shiko", "PreviewFilePDF", new { id = item.Id }, new { @class = "btn btn-info" })
+            }
+            if (item.FileName.Contains(".jpg"))
+            {
+                @Html.ActionLink("Shiko", "PreviewFileJpg", new { id = item.Id }, new { @class = "btn btn-info" })
+            }
+            if (item.FileName.Contains(".png"))
+            {
+                @Html.ActionLink("Shiko", "PreviewFilePNG", new { id = item.Id }, new { @class = "btn btn-info" })
+            }
+        }
+        @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
     }
 
 </table>

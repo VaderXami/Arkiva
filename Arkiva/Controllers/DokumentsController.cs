@@ -36,9 +36,17 @@ namespace Arkiva.Controllers
             {
                 ViewBag.Message = "Nuk u gjend asnje Dokument!";
             }
+            int nb = 0;
+            foreach (var item in dokument)
+            {
+                nb += 1;
+            }
+            if (nb > 1)
+            {
+                ViewBag.No = "Nr total i dokumenteve: " + nb;
+            }
             return View(dokument.ToList());
         }
-
         /*
         // GET: Dokuments/Details/5
         public ActionResult Details(int? id)
