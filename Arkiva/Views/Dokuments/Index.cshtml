@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Arkiva.Models.Dokument>
 @{
-    ViewBag.Title = "Dokumente";
-    ViewBag.Url = Context.Request.Url;
-    ArkivaDBContext db = new ArkivaDBContext();
+    
+    var url = Context.Request.Url.ToString();
+    string[] tmp = url.Split('=');
+
     var id = Context.Request.Url;
     string[] str = id.ToString().Split('=');
-
 
     foreach (var item in Model)
     {
@@ -13,17 +13,20 @@
         {
             var idd = item.Inspektim.SubjektId;
             ViewBag.Id = idd;
+            ViewBag.Title = "Lista e Dokumenteve per inspektimin nga " + item.Inspektim.Emri + ", me Subjekt perkates " + item.Inspektim.Subjekt.Emri;
+            ViewBag.Path = item.Inspektim.Subjekt.Emri + " / " + item.Inspektim.Emri + " / Dokumente";
         }
     }
 
 }
 
 <h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Path</h4>
 
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>
-        @Html.ActionLink("Ngarko Dokument", "Create", new { url = ViewBag.Url }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Ngarko Dokument", "Create", new { InspektimId = tmp[1] }, new { @class = "btn btn-success" })
         @Html.ActionLink("Shko te Inspektimet", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, new { @class = "btn btn-warning" })
     </div>
     @using (Html.BeginForm("Index", "Dokuments", FormMethod.Get))

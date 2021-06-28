@@ -1,9 +1,16 @@
 ﻿@model IEnumerable<Arkiva.Models.Inspektim>
 @{
     ViewBag.Title = "Inspektime";
+    var url = Context.Request.Url;
+    string[] tmp = url.ToString().Split('=');
+
+    ArkivaDBContext db = new ArkivaDBContext();
+
+    var m = db.Subjekt.Find(tmp[1].AsInt());
 }
 
-<h2>Inspektime</h2>
+<h2> List e inspektimeve per Subjektin @m.Emri </h2>
+
 
 <p>
     <div align="right">
@@ -16,7 +23,7 @@
             ViewBag.Total = "Nr total i inspektimeve: " + Model.Count();
         }
         <h4>@ViewBag.Total</h4>
-        @Html.ActionLink("Krijo Inspektim", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Krijo Inspektim", "Create", new {SubjektId = tmp[1] }, new { @class = "btn btn-success" })
         @Html.ActionLink("Shko te Subjektet", "Index", "Subjekts", null, new { @class = "btn btn-warning" })
     </div>
     @using (Html.BeginForm("Index", "Inspektims", FormMethod.Get))

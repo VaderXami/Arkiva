@@ -78,6 +78,15 @@ namespace Arkiva.Controllers
             return View(subjekt);
         }
 
+        public string GetNewName(string filename)
+        {
+            string ext = Path.GetExtension(filename);
+            string name = Path.GetFileNameWithoutExtension(filename);
+                
+            string newFileName = name +  "_" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ext;
+            return newFileName;
+        }
+
         public ActionResult DownloadZipFile(int id)
         {
             using (var memoryStream = new MemoryStream())
@@ -90,7 +99,7 @@ namespace Arkiva.Controllers
                         var dokumente = db.Inspektim.Find(inspektim.Id).Dokumente;
                         foreach (var dokument in dokumente)
                         {
-                            var file = archive.CreateEntry(inspektim.Emri + "/" + dokument.FileName.ToString());
+                            var file = archive.CreateEntry(inspektim.Emri + "/" + GetNewName(dokument.FileName.ToString()));
                             using (var stream = file.Open())
                             {
                                 stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);

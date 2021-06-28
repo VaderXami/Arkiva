@@ -1,7 +1,7 @@
 ﻿@model Arkiva.Models.Inspektim
 
 @{
-    ViewBag.Title = Model.Subjekt.Emri + " - " + Model.Emri;
+    ViewBag.Title = "Fshi inspektimin e kryer nga " + Model.Emri;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,11 +12,11 @@
 
     if (ViewBag.Numri > 1)
     {
-        ViewBag.Message = "Kujdes! Inspektimi perkates permban " + ViewBag.Numri + " Dokumente.";
+        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokumente.";
     }
     else
     {
-        ViewBag.Message = "Kujdes! Inspektimoi perkates permban " + ViewBag.Numri + " Dokument.";
+        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokument.";
     }
 
 }
@@ -28,62 +28,6 @@
 
     <div class="form-actions no-color" align="right">
         <input type="submit" value="Fshi" class="btn btn-danger" />
-        @Html.ActionLink("Shko te Inspektimet", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Anulo", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning" })
     </div>
 }
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Subjekt.Emri)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Subjekt.Emri)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Emri)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Emri)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-
-    </dl>
-
-    <table class="table">
-        @foreach (var item in Model.Dokumente)
-        {
-            <tr>
-                <td>
-                    @{ if (item.FileName.Contains(".pdf"))
-                        {
-                            <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
-                        }
-                        if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
-                        {
-                            <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
-                        }
-                        if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
-                        {
-                            <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
-                        }
-                    }
-                    @Html.DisplayFor(modelItem => item.FileName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-            </tr>
-        }
-    </table>
-</div>

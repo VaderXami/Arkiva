@@ -1,7 +1,7 @@
 ﻿@model Arkiva.Models.Subjekt
 
 @{
-    ViewBag.Title = Model.Emri;
+    ViewBag.Title = "Fshi Subjektin e perzgjedhur: " + Model.Emri;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,7 +12,7 @@
 
     if (ViewBag.Numri > 1)
     {
-        ViewBag.Message = "Kujdes! Subjekti perkates permban " + ViewBag.Numri + " inspektime.";
+        ViewBag.Message = "Kujdes! Ju po fshini Subjektin " + Model.Emri + " i cili permban " + ViewBag.Numri + " Inspektime" + ". Deshironi te procedoni me zgjedhjen?";
     }
     else
     {
@@ -27,40 +27,6 @@
     @Html.AntiForgeryToken()
     <div class="form-actions no-color" align="right">
         <input type="submit" value="Fshi" class="btn btn-danger" />
-        @Html.ActionLink("Shko te Subjektet", "Index", null, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Anulo", "Index", null, new { @class = "btn btn-warning" })
     </div>
 }
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Emri)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Emri)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-    </dl>
-    <table class="table">
-        @foreach (var item in Model.Inspektime)
-        {
-            <tr>
-                <td>
-                    <img src="~/Assets/folder.png" width="30px" height="30px" />
-                    @Html.DisplayFor(modelItem => item.Emri)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-            </tr>
-        }
-    </table>
-</div>

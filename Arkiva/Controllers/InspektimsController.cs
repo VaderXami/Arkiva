@@ -79,8 +79,9 @@ namespace Arkiva.Controllers
 
 
         // GET: Inspektims/Create
-        public ActionResult Create()
+        public ActionResult Create(int SubjektId)
         {
+            ViewBag.SId = SubjektId;
             ViewBag.SubjektId = new SelectList(db.Subjekt, "Id", "Emri");
             return View();
         }

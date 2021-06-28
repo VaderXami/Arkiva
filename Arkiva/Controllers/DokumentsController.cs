@@ -102,15 +102,14 @@ namespace Arkiva.Controllers
             return File(dokument.FileContent, "image/png");
         }
         // GET: Dokuments/Create
-        public ActionResult Create(string url)
+        public ActionResult Create(string InspektimId)
         {
-            string[] InspektimId = url.Split('=');
             var inspektimList = new List<string>();
             var inspektimQy = from d in db.Inspektim orderby d.Id select d.Id.ToString();
             var dokument = from m in db.Dokument select m;
             
             inspektimList.AddRange(inspektimQy.Distinct());
-            ViewBag.InspektimId = new SelectList(inspektimList.Where(s => s.Contains(InspektimId[1])));
+            ViewBag.InspektimId = new SelectList(inspektimList.Where(s => s.Contains(InspektimId)));
             return View();
         }
 

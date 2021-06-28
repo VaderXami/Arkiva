@@ -13,12 +13,12 @@
 @Html.ActionLink("Shkarko Zip File", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dropdown-menu-left">
+        <dt style="width: auto">
             @Html.DisplayNameFor(model => model.Emri)
         </dt>
 
-        <dd>
+        <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Emri)
         </dd>
 
@@ -26,7 +26,7 @@
             @Html.DisplayNameFor(model => model.Data)
         </dt>
 
-        <dd>
+        <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Data)
         </dd>
 
@@ -35,6 +35,16 @@
         </dt>
     </dl>
     <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Inspektime.FirstOrDefault().Emri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inspektime.FirstOrDefault().Data)
+            </th>
+            <th></th>
+        </tr>
+
         @foreach (var item in Model.Inspektime)
         {
             <tr>

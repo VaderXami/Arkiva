@@ -984,4 +984,3 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files.resourc
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.pdb
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.xml
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache
