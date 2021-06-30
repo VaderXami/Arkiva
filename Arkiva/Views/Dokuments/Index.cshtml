@@ -22,27 +22,26 @@
     }
 
     var list = db.Inspektim.Where(s => s.Id == tmpp).Select(i => i.SubjektId);
-    var listSubjekt = db.Inspektim.Where(s => s.Id == tmpp).Select(i => i.Subjekt);
-    var listInspektim = db.Dokument.Where(s => s.Id == tmpp).Select(i => i.Inspektim);
-
     foreach (var tt in list)
     {
         ViewBag.Id = tt;
     }
 
-    foreach (var item in Model)
-    {
-        if (item.InspektimId == str[1].AsInt())
-        {
+    var inspektimEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Emri);
+    var subjektEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Subjekt.Emri);
 
-            ViewBag.Title = "Lista e Dokumenteve per inspektimin nga " + item.Inspektim.Emri + ", me Subjekt perkates " + item.Inspektim.Subjekt.Emri;
-            ViewBag.Path = item.Inspektim.Subjekt.Emri + " / " + item.Inspektim.Emri + " / Dokumente";
-        }
+    foreach(var dd in subjektEmri)
+    {
+        ViewBag.SubjektName = dd;
+    }
+
+    foreach (var item in inspektimEmri)
+    {
+        ViewBag.InspektimName = "Lista e Dokumenteve per inspektimin nga " + item + " per Subjektin " + ViewBag.SubjektName;
     }
 }
 
-<h2>@ViewBag.Title</h2>
-<h4>@ViewBag.Path</h4>
+<h2>@ViewBag.InspektimName</h2>
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>

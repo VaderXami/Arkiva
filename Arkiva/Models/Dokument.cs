@@ -16,6 +16,7 @@ namespace Arkiva.Models
         [Display(Name = "Data e Regjistrimit")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
+        [Display(Name = "Emri Dokumentit")]
         public String FileName { get; set; }
         public byte[] FileContent { get; set; }
         [NotMapped]

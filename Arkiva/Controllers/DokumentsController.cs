@@ -111,29 +111,28 @@ namespace Arkiva.Controllers
                 {
                     string FileExt = Path.GetExtension(Files.FileName).ToUpper();
 
-                    if (FileExt == ".PDF" || FileExt == ".DOC" || FileExt == ".DOCX" || FileExt == ".PNG" || FileExt == ".JPG" || FileExt == ".JPEG")
-                    {
-                        Stream str = Files.InputStream;
-                        BinaryReader Br = new BinaryReader(str);
-                        Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
+                        if (FileExt == ".PDF" || FileExt == ".DOC" || FileExt == ".DOCX" || FileExt == ".PNG" || FileExt == ".JPG" || FileExt == ".JPEG")
+                        {
+                            Stream str = Files.InputStream;
+                            BinaryReader Br = new BinaryReader(str);
+                            Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
 
-                        dokument.FileName = Files.FileName;
-                        dokument.FileContent = FileDet;
-                        dokument.Data = DateTime.Now;
-                        db.Dokument.Add(dokument);
-                        db.SaveChanges();
-                        return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
-                    }
-                    else
-                    {
+                            dokument.FileName = Files.FileName;
+                            dokument.FileContent = FileDet;
+                            dokument.Data = DateTime.Now;
+                            db.Dokument.Add(dokument);
+                            db.SaveChanges();
+                            return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
+                        }
+                        else
+                        {
 
-                        ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
-                        return View();
+                            ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
+                            return View();
 
+                        }
                     }
                 }
-            }
-
             ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", dokument.InspektimId);
             return View(dokument);
         }
