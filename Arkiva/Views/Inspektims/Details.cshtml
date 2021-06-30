@@ -10,7 +10,10 @@
     @Html.ActionLink("Shko te Inspektimet", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning" })
 </div>
 <div>
-    @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+    @if (Model.Dokumente.Any())
+    {
+        @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+    }
     <hr />
     <dl class="dropdown-menu-left">
         <dt style="width: auto">

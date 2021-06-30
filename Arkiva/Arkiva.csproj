@@ -348,6 +348,10 @@
     <Compile Include="Migrations\202106180826015_files.Designer.cs">
       <DependentUpon>202106180826015_files.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106291329162_files1.cs" />
+    <Compile Include="Migrations\202106291329162_files1.Designer.cs">
+      <DependentUpon>202106291329162_files1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -430,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106180826015_files.resx">
       <DependentUpon>202106180826015_files.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291329162_files1.resx">
+      <DependentUpon>202106291329162_files1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

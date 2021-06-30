@@ -9,9 +9,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-
 <div align="right">
-    @Html.ActionLink("Anulo", "Index", new { InspektimId = InspektimId[1] }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Anulo", "Index", new { InspektimId = InspektimId[1].AsInt() }, new { @class = "btn btn-warning" })
 </div>
 
 

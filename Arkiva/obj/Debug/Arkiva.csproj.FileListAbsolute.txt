@@ -546,6 +546,7 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\roslyn\VBCSCompiler.exe
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\Antlr3.Runtime.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\Ben.Demystifier.dll
+C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\EntityFramework.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\EntityFramework.SqlServer.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\Microsoft.Azure.DevOps.Comments.WebApi.dll
@@ -612,6 +613,8 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\System.Web.WebPages.Deployment.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\System.Web.WebPages.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\System.Web.WebPages.Razor.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\WebGrease.dll
+C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.pdb
+C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.xml
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\EntityFramework.xml
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\EntityFramework.SqlServer.xml
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\Microsoft.Azure.DevOps.Comments.WebApi.xml
@@ -974,13 +977,12 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\ru\Microsoft.VisualStudio.Services.We
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.Update.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CoreCompileInputs.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CopyComplete
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.pdb
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.Update.resources
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files.resources
-C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.dll
-C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.pdb
-C:\Users\ss\source\repos\Arkiva\Arkiva\bin\DotNetZip.xml
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files1.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache

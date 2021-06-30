@@ -10,7 +10,7 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vendosni emrin e Institucionit Inspektues!")]
         [Display(Name = "Emri Institucionit Shteterore")]
         public string Emri { get; set; }
 

@@ -9,7 +9,7 @@ namespace Arkiva.Models
     public class Subjekt
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vendosni emrin e Subjektit perkates!")]
         [Display(Name = "Emri Subjektit Perkates")]
         public string Emri { get; set; }
 
