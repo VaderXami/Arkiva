@@ -119,6 +119,7 @@ namespace Arkiva.Controllers
 
                         dokument.FileName = Files.FileName;
                         dokument.FileContent = FileDet;
+                        dokument.Data = DateTime.Now;
                         db.Dokument.Add(dokument);
                         db.SaveChanges();
                         return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });

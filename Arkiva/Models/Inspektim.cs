@@ -14,7 +14,7 @@ namespace Arkiva.Models
         [Display(Name = "Emri Institucionit Shteterore")]
         public string Emri { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
         [Display(Name = "Data e Kontrollit")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

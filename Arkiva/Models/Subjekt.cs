@@ -13,7 +13,7 @@ namespace Arkiva.Models
         [Display(Name = "Emri Subjektit Perkates")]
         public string Emri { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

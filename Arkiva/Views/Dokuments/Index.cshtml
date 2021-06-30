@@ -46,7 +46,7 @@
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>
-        @Html.ActionLink("Ngarko Dokument", "Create", new { InspektimId = tmp[1] }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Ngarko Dokument", "Create", new { InspektimId = tmpp }, new { @class = "btn btn-success" })
         @Html.ActionLink("Shko te Inspektimet", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, new { @class = "btn btn-warning" })
     </div>
     @using (Html.BeginForm("Index", "Dokuments", FormMethod.Get))
