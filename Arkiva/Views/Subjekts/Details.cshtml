@@ -34,10 +34,12 @@
         <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Data)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Inspektime)
+            <h5 style="font-weight: 700">Nr. Inspektimeve</h5>
         </dt>
+        <dd style="padding-bottom: 20px">
+            <h5>@Model.Inspektime.Count()</h5>
+        </dd>
     </dl>
     <table class="table">
         <tr>

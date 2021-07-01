@@ -7,8 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 </head>
 <body style="background-color: #FBE7C6">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,12 +30,12 @@
         @RenderBody()
         <hr />
         <footer style="font-family:'Courier New'">
-            <p>&copy; @DateTime.Now.Year - Arkiva Shteterore by <a href="https://github.com/VaderXami">VaderXami <img src="~/Assets/github.png" style="width: 30px; height: 30px"/> </a></p>
+            <p>&copy; @DateTime.Now.Year - Arkiva Shteterore by <a href="https://github.com/VaderXami">VaderXami <img src="~/Assets/github.png" style="width: 30px; height: 30px" /> </a></p>
         </footer>
     </div>
-
+    @*Scripts*@
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
 </body>
 </html>

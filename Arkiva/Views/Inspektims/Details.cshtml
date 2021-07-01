@@ -41,8 +41,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Dokumente)
+            <h5 style="font-weight: 700">Nr. Dokumenteve</h5>
         </dt>
+        <dd style="padding-bottom: 20px">
+            <h5>@Model.Dokumente.Count()</h5>
+        </dd>
+
     </dl>
 
     <table class="table">
@@ -63,13 +67,17 @@
                         {
                             <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
                         }
-                        else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+                        if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
                         {
                             <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
                         }
-                        else if (item.FileName.Contains(".jpg") || item.FileName.Contains(".jpeg") || (item.FileName.Contains(".png")))
+                        if (item.FileName.Contains(".jpg") || item.FileName.Contains(".jpeg") || (item.FileName.Contains(".png")))
                         {
                             <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
+                        }
+                        if (item.FileName.Contains(".xlsx") || item.FileName.Contains(".xlsm") || item.FileName.Contains(".xlsb") || item.FileName.Contains(".xltx"))
+                        {
+                            <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px"/>
                         }
                     }
                     @Html.DisplayFor(modelItem => item.FileName)

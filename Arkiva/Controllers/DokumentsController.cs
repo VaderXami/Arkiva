@@ -52,10 +52,12 @@ namespace Arkiva.Controllers
         public FileResult DownLoadFile(int id)
         {
             Dokument dokument = db.Dokument.Find(id);
+            string filename = Path.GetFileName(dokument.FileName).ToLower();
             string ext = Path.GetExtension(dokument.FileName).ToLower();
 
-            return File(dokument.FileContent, "application/" + ext, dokument.FileName);
+            string newFilename = filename + "_" + dokument.Data.ToString("yyyyMMddHHmmssffff") + ext;
 
+            return File(dokument.FileContent, "application/" + ext, newFilename);
         }
 
         [HttpGet]
@@ -109,9 +111,15 @@ namespace Arkiva.Controllers
             {
                 foreach (HttpPostedFileBase Files in files)
                 {
-                    string FileExt = Path.GetExtension(Files.FileName).ToUpper();
+                    if (Files == null)
+                    {
+                        ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
+                    }
+                    else
+                    {
+                        string FileExt = Path.GetExtension(Files.FileName).ToUpper();
 
-                        if (FileExt == ".PDF" || FileExt == ".DOC" || FileExt == ".DOCX" || FileExt == ".PNG" || FileExt == ".JPG" || FileExt == ".JPEG")
+                        if (FileExt == ".PDF" || FileExt == ".DOC" || FileExt == ".DOCX" || FileExt == ".PNG" || FileExt == ".JPG" || FileExt == ".JPEG" || FileExt == ".XLSX")
                         {
                             Stream str = Files.InputStream;
                             BinaryReader Br = new BinaryReader(str);
@@ -126,13 +134,12 @@ namespace Arkiva.Controllers
                         }
                         else
                         {
-
                             ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
                             return View();
-
                         }
-                    }
+                    }   
                 }
+            }
             ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", dokument.InspektimId);
             return View(dokument);
         }
