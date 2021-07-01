@@ -6,8 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 <div align="right">
-    @Html.ActionLink("Edito", "Edit", new { id = Model.Id }, new { @class="btn btn-primary"})
-    @Html.ActionLink("Shko te Inspektimet", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning" })
+    @Html.ActionLink("Shko Pas", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning" })
 </div>
 <div>
     @if (Model.Dokumente.Any())

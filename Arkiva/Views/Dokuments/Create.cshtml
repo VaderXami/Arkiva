@@ -32,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Files, "", new { @class = "costum-file", @type = "file", @multiple = "multiple" })
+                @Html.TextBoxFor(model => model.Files, "", new { type = "file", @class = "input-file", @text = "hello ", @multiple = "multiple", required = "required", @oninvalid = "this.setCustomValidity('GG')"})
                 @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
             </div>
             @ViewBag.FileStatus
@@ -40,7 +40,7 @@
         <div class="form-group" style="display: none">
             @Html.LabelFor(model => model.InspektimId, "InspektimId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("InspektimId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("InspektimId", null, htmlAttributes: new { @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.InspektimId, "", new { @class = "text-danger" })
             </div>
         </div>
