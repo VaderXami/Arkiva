@@ -987,3 +987,4 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.pdb
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig1.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig2.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache

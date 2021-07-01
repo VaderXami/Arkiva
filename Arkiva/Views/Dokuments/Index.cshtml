@@ -108,15 +108,15 @@
             <td align="right">
                 @{ if (item.FileName.Contains(".pdf"))
                     {
-                        @Html.ActionLink("Shiko", "PreviewFilePDF", new { id = item.Id }, new { @class = "btn btn-info" })
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })')" />
                     }
                     if (item.FileName.Contains(".jpg"))
                     {
-                        @Html.ActionLink("Shiko", "PreviewFileJpg", new { id = item.Id }, new { @class = "btn btn-info" })
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFileJpg", "Dokuments" , new { id = item.Id })')" />
                     }
                     if (item.FileName.Contains(".png"))
                     {
-                        @Html.ActionLink("Shiko", "PreviewFilePNG", new { id = item.Id }, new { @class = "btn btn-info" })
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePNG", "Dokuments" , new { id = item.Id })')" />
                     }
                 }
                 @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary" })
