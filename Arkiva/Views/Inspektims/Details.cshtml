@@ -62,21 +62,29 @@
         {
             <tr>
                 <td>
-                    @{ if (item.FileName.Contains(".pdf"))
+                    @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
                         {
                             <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
                         }
-                        if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+                        else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
                         {
                             <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
                         }
-                        if (item.FileName.Contains(".jpg") || item.FileName.Contains(".jpeg") || (item.FileName.Contains(".png")))
+                        else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
                         {
                             <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
                         }
-                        if (item.FileName.Contains(".xlsx") || item.FileName.Contains(".xlsm") || item.FileName.Contains(".xlsb") || item.FileName.Contains(".xltx"))
+                        else if (item.FileName.Contains(".xlsx"))
                         {
-                            <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px"/>
+                            <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+                        }
+                        else if (item.FileName.Contains(".zip"))
+                        {
+                            <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
+                        }
+                        else
+                        {
+                            <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
                         }
                     }
                     @Html.DisplayFor(modelItem => item.FileName)

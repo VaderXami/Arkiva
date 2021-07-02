@@ -39,6 +39,8 @@
     {
         ViewBag.InspektimName = "Lista e Dokumenteve per inspektimin nga " + item + " per Subjektin " + ViewBag.SubjektName;
     }
+
+    ViewBag.Title = "Dokumente";
 }
 
 <h2>@ViewBag.InspektimName</h2>
@@ -83,21 +85,29 @@
                 @Html.DisplayFor(modelItem => item.Inspektim.Emri)
             </td>
             <td>
-                @{ if (item.FileName.Contains(".pdf"))
+                @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
                     {
                         <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
                     }
-                    if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+                    else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
                     {
                         <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
                     }
-                    if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
+                    else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
                     {
                         <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
                     }
-                    if (item.FileName.Contains(".xlsx"))
+                    else if (item.FileName.Contains(".xlsx"))
                     {
                         <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+                    }
+                    else if (item.FileName.Contains(".zip"))
+                    {
+                        <img src="~/Assets/zipfile1.png"  style="width: 30px; height: 30px"/>
+                    }
+                    else
+                    {
+                        <img src="~/Assets/file.png" style="width: 30px; height: 30px"/>
                     }
                 }
                 @Html.DisplayFor(modelItem => item.FileName)

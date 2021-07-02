@@ -980,11 +980,11 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hant\Microsoft.VisualStudio.Servic
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.Update.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.files1.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig1.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig2.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CoreCompileInputs.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CopyComplete
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.pdb
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig1.resources
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.mig2.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache

@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using Arkiva.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Arkiva.Models;
-using System.IO;
-using System;
-using System.Collections.Generic;
 
 namespace Arkiva.Controllers
 {
@@ -111,34 +111,17 @@ namespace Arkiva.Controllers
             {
                 foreach (HttpPostedFileBase Files in files)
                 {
-                    if (Files == null)
-                    {
-                        ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
-                    }
-                    else
-                    {
-                        string FileExt = Path.GetExtension(Files.FileName).ToUpper();
-
-                        if (FileExt == ".PDF" || FileExt == ".DOC" || FileExt == ".DOCX" || FileExt == ".PNG" || FileExt == ".JPG" || FileExt == ".JPEG" || FileExt == ".XLSX")
-                        {
-                            Stream str = Files.InputStream;
-                            BinaryReader Br = new BinaryReader(str);
-                            Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
-
-                            dokument.FileName = Files.FileName;
-                            dokument.FileContent = FileDet;
-                            dokument.Data = DateTime.Now;
-                            db.Dokument.Add(dokument);
-                            db.SaveChanges();
-                            return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
-                        }
-                        else
-                        {
-                            ViewBag.FileStatus = "Formatet e dokumentit duhe te jene: png, jpg, jpeg, docx, doc, pdf dhe ppt";
-                            return View();
-                        }
-                    }   
-                }
+                    Stream str = Files.InputStream;
+                    BinaryReader Br = new BinaryReader(str);
+                    Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
+                    
+                    dokument.FileName = Files.FileName;
+                    dokument.FileContent = FileDet;
+                    dokument.Data = DateTime.Now;
+                    db.Dokument.Add(dokument);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
+                }   
             }
             ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", dokument.InspektimId);
             return View(dokument);
