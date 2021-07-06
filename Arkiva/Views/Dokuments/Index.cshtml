@@ -22,6 +22,12 @@
     }
 
     var list = db.Inspektim.Where(s => s.Id == tmpp).Select(i => i.SubjektId);
+
+    if (!list.Any())
+    {
+        Response.Redirect("PageNotFound");
+    }
+
     foreach (var tt in list)
     {
         ViewBag.Id = tt;
@@ -30,7 +36,7 @@
     var inspektimEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Emri);
     var subjektEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Subjekt.Emri);
 
-    foreach(var dd in subjektEmri)
+    foreach (var dd in subjektEmri)
     {
         ViewBag.SubjektName = dd;
     }
@@ -43,7 +49,7 @@
     ViewBag.Title = "Dokumente";
 }
 
-<h2>@ViewBag.InspektimName</h2>
+<h4>@ViewBag.InspektimName</h4>
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>
@@ -57,9 +63,6 @@
                 @Html.Hidden("InspektimId")
                 @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin" }) <br />
                 <input type="submit" value="Kerko" class="btn btn-info" />
-                <div class="text-danger">
-                    @ViewBag.Message
-                </div> <br />
             </p>
         </div>
     }
@@ -103,11 +106,11 @@
                     }
                     else if (item.FileName.Contains(".zip"))
                     {
-                        <img src="~/Assets/zipfile1.png"  style="width: 30px; height: 30px"/>
+                        <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
                     }
                     else
                     {
-                        <img src="~/Assets/file.png" style="width: 30px; height: 30px"/>
+                        <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
                     }
                 }
                 @Html.DisplayFor(modelItem => item.FileName)
@@ -130,9 +133,13 @@
                     }
                 }
                 @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
 
 </table>
+<div class="text-danger">
+    @ViewBag.Message
+</div>
+<br />

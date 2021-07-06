@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Arkiva.Controllers
 {
+    [HandleError]
     public class DokumentsController : Controller
     {
         private ArkivaDBContext db = new ArkivaDBContext();

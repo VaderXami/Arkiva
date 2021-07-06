@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "Edito Subjektin";
+
+    var date = Model.Data.ToString("mm/dd/yyyy");
 }
 
-<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Title @Model.Emri</h4>
 
 <div align="right">
     @Html.ActionLink("Anulo Editim", "Index", null, new { @class = "btn btn-warning" })
@@ -20,17 +22,17 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group" style="padding-top: 10px"> 
-            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" }})
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +44,6 @@
         </div>
     </div>
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

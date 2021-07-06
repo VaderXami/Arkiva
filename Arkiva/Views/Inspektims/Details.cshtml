@@ -4,15 +4,11 @@
     ViewBag.Title = "Permbajtja e Inspektimit kryer nga " + Model.Emri + " dhe i perket Subjektit " + Model.Subjekt.Emri;
 }
 
-<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Title</h4>
 <div align="right">
     @Html.ActionLink("Shko Pas", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning" })
 </div>
 <div>
-    @if (Model.Dokumente.Any())
-    {
-        @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
-    }
     <hr />
     <dl class="dropdown-menu-left">
         <dt style="width: auto">
@@ -47,6 +43,12 @@
         </dd>
 
     </dl>
+    <div align="right">
+        @if (Model.Dokumente.Any())
+        {
+            @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+        }
+    </div>
 
     <table class="table">
         <tr>

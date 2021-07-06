@@ -4,16 +4,11 @@
     ViewBag.Title = "Permbajtja e subjektit " + Model.Emri;
 }
 
-<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Title</h4>
 
 <div align="right">
     @Html.ActionLink("Shko Pas", "Index", null, new { @class = "btn btn-warning" })
 </div>
-
-@if (Model.Inspektime.Any())
-{
-    @Html.ActionLink("Shkarko Zip File", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
-}
 
 <div>
     <hr />
@@ -39,6 +34,13 @@
         <dd style="padding-bottom: 20px">
             <h5>@Model.Inspektime.Count()</h5>
         </dd>
+
+        <div align="right">
+            @if (Model.Inspektime.Any())
+            {
+                @Html.ActionLink("Shkarko .zip", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+            }
+        </div>
     </dl>
     <table class="table">
         <tr>

@@ -9,10 +9,10 @@
 </head>
 <body style="background-color: #FBE7C6">
 
-    <div class="navbar navbar-inverse navbar navbar-dark bg-dark justify-content-between  fixed-top">
+    <div class="navbar navbar-inverse navbar navbar-dark bg-dark justify-content-between  fixed-top" style="height: 70px;">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Arkiva", "Index", "Subjekts", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Arkiva", "Index", "Subjekts", new { area = "" }, new { @class = "navbar-brand", @style="font-size: 250%"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -20,11 +20,11 @@
             </div>
         </div>
     </div>
-    <div class="container body-content" style="padding-top: 20px">
+    <div class="container body-content" style="padding-top: 100px">
         @RenderBody()
         <hr />
-        <footer style="font-family:'Courier New'">
-            <p>&copy; @DateTime.Now.Year - Arkiva Shteterore by <a href="https://github.com/VaderXami">VaderXami <img src="~/Assets/github.png" style="width: 30px; height: 30px" /> </a></p>
+        <footer style="font-family:'Courier New'; justify-content:center; background-color: black" class="fixed-bottom modal-footer">
+            <p style="color:white">&copy; @DateTime.Now.Year - Arkiva Shteterore by <a href="https://github.com/VaderXami" style="color:white">VaderXami </a></p>
         </footer>
     </div>
     @*Scripts*@

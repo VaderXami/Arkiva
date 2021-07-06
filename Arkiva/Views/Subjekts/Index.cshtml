@@ -4,12 +4,12 @@
     ViewBag.Title = "Subjektet e Regjistruara ";
 }
 
-<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Title</h4>
 <p>
     <div align="right">
         @if (Model.Count() == 0)
         {
-            ViewBag.Total = "Nuk ka asnje subjekt te regjistruar";
+            ViewBag.Total2 = "Nuk ka asnje subjekt te regjistruar";
         }
         else
         {
@@ -58,9 +58,4 @@
         </tr>
     }
 </table>
-    <div id="container" style="margin-left: 20px">
-        <p></p>
-        <p></p>
-        <div class="pagination" style="margin-left: 400px">
-        </div>
-    </div>
+<h5 class="text-danger">@ViewBag.Total2</h5>

@@ -12,6 +12,7 @@ using Arkiva.Models;
 
 namespace Arkiva.Controllers
 {
+    [HandleError]
     public class SubjektsController : Controller
     {
         private ArkivaDBContext db = new ArkivaDBContext();
@@ -41,6 +42,7 @@ namespace Arkiva.Controllers
         }
 
         // GET: Subjekts/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)

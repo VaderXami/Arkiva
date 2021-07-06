@@ -11,6 +11,7 @@ using Arkiva.Models;
 
 namespace Arkiva.Controllers
 {
+    [HandleError]
     public class InspektimsController : Controller
     {
         private ArkivaDBContext db = new ArkivaDBContext();
@@ -32,10 +33,10 @@ namespace Arkiva.Controllers
             if (!String.IsNullOrEmpty(search))
             {
                 inspektim = inspektim.Where(x => x.Emri.Contains(search));
-            }
-            if (!inspektim.Any())
-            {
-                ViewBag.Message = "Nuk u gjend asnje Inspektim!";
+                if (!inspektim.Any())
+                {
+                    ViewBag.Message = "Nuk u gjend asnje Inspektim!";
+                }
             }
             return View(inspektim.ToList());
         }
