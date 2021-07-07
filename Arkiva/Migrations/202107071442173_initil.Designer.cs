@@ -7,13 +7,13 @@ namespace Arkiva.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Update : IMigrationMetadata
+    public sealed partial class initil : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initil));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106171230226_Update"; }
+            get { return "202107071442173_initil"; }
         }
         
         string IMigrationMetadata.Source

@@ -341,25 +341,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106171230226_Update.cs" />
-    <Compile Include="Migrations\202106171230226_Update.Designer.cs">
-      <DependentUpon>202106171230226_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106180826015_files.cs" />
-    <Compile Include="Migrations\202106180826015_files.Designer.cs">
-      <DependentUpon>202106180826015_files.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106291329162_files1.cs" />
-    <Compile Include="Migrations\202106291329162_files1.Designer.cs">
-      <DependentUpon>202106291329162_files1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107010942356_mig1.cs" />
-    <Compile Include="Migrations\202107010942356_mig1.Designer.cs">
-      <DependentUpon>202107010942356_mig1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107010944277_mig2.cs" />
-    <Compile Include="Migrations\202107010944277_mig2.Designer.cs">
-      <DependentUpon>202107010944277_mig2.cs</DependentUpon>
+    <Compile Include="Migrations\202107071442173_initil.cs" />
+    <Compile Include="Migrations\202107071442173_initil.Designer.cs">
+      <DependentUpon>202107071442173_initil.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
@@ -565,20 +549,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106171230226_Update.resx">
-      <DependentUpon>202106171230226_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106180826015_files.resx">
-      <DependentUpon>202106180826015_files.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291329162_files1.resx">
-      <DependentUpon>202106291329162_files1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107010942356_mig1.resx">
-      <DependentUpon>202107010942356_mig1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107010944277_mig2.resx">
-      <DependentUpon>202107010944277_mig2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107071442173_initil.resx">
+      <DependentUpon>202107071442173_initil.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

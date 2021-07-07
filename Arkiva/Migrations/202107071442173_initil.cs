@@ -3,7 +3,7 @@ namespace Arkiva.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Update : DbMigration
+    public partial class initil : DbMigration
     {
         public override void Up()
         {
