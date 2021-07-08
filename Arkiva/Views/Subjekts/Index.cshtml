@@ -21,7 +21,7 @@
     @using (Html.BeginForm("Index", "Subjekts", FormMethod.Get))
     {
     <p>
-        @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Subjektin" }) <br />
+        @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Subjektin", autocomplete = "off" }) <br />
         <input type="submit" value="Kerko" class="btn btn-info" />
         <div class="text-danger">
             @ViewBag.Message

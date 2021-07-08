@@ -34,7 +34,6 @@ namespace Arkiva.Models
 
         [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         public virtual ICollection<Inspektim> Inspektime { get; set; }
