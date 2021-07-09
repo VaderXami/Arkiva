@@ -156,9 +156,9 @@ namespace Arkiva.Controllers
          *          qe te shkarkojme ato qe i perkasin ketij Inspektimi specifik. Shembull: Akshi -> 10 Dokumenta, AKU -> 4 Dokumenta
          * Return: Kthen nje Arkive duke perdorur File class.
         **/
-        public ActionResult DownloadZipFile(int id)
+        /*public ActionResult DownloadZipFile(int id)
         {
-            var dokument = db.Dokument.Where(i => i.InspektimId == id).ToList();
+            var dokument = db.Dokument.Where(i => i.LlojiDokumentitId == id).ToList();
 
             using (var memoryStream = new MemoryStream())
             {
@@ -166,7 +166,7 @@ namespace Arkiva.Controllers
                 {
                     foreach (var doc in dokument)
                     {
-                        var file = archive.CreateEntry(doc.Inspektim.Subjekt.Emri +"/"+ doc.Inspektim.Emri + "/" + GetNewName(doc.FileName.ToString()));
+                        var file = archive.CreateEntry(doc.LlojiDokumentit.Inspektim.Emri +"/"+ doc.LlojiDokumentit.Emri + "/" + GetNewName(doc.FileName.ToString()));
                         using (var stream = file.Open())
                         {
                             stream.Write(doc.FileContent, 0, doc.FileContent.Length);
@@ -176,7 +176,7 @@ namespace Arkiva.Controllers
                 var inspektim = db.Inspektim.Find(id);
                 return File(memoryStream.ToArray(), "application/zip", inspektim.Emri + ".zip");
             }
-        }
+        }*/
 
         /**
          * Data: 10/06/2021

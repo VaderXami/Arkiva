@@ -981,6 +981,6 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CoreCompileInputs
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CopyComplete
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.pdb
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.initil.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations._new.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache

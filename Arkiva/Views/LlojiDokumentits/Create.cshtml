@@ -1,0 +1,91 @@
+﻿@model Arkiva.Models.LlojiDokumentit
+
+@{
+    ViewBag.Title = "Krijo Lloj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    var url = Context.Request.Url;
+    string[] lloji = url.ToString().Split('=');
+}
+
+<h2>Krijo Dosje sipas llojit te dokumentit.</h2>
+
+
+<div align="right">
+    @Html.ActionLink("Anulo", "Index", new { InspektimId = lloji[1].AsInt() }, new { @class = "btn btn-warning" })
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control", autocomplete="off" } })
+            @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control datepicker", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="display: none">
+        @Html.LabelFor(model => model.InspektimId, "InspektimId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("InspektimId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.InspektimId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 30px">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Shto" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-darkness/jquery-ui.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker($.datepicker.regional['sq'] = {
+                closeText: 'mbylle',
+                prevText: '&#x3c;Mbrapa',
+                nextText: 'Përpara&#x3e;',
+                currentText: 'sot',
+                monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+                    'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'],
+                monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nën', 'Dhj'],
+                dayNames: ['E Diel', 'E Hënë', 'E Martë', 'E Mërkurë', 'E Enjte', 'E Premte', 'E Shtune'],
+                dayNamesShort: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                dayNamesMin: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                weekHeader: 'Ja',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                changeMonth: true,
+                changeYear: true,
+            });
+        });
+    </script>
+}
+

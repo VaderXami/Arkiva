@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Fshi Dokumentin e perzgjedhur: " + Model.FileName;
-    ViewBag.Message = "Kujdes! Ju po fshini dokumentin e Subjektit " + Model.Inspektim.Subjekt.Emri + " te cilit i perket institucionit Inspektues Shteterore " + Model.Inspektim.Emri + ". Deshironi te procedoni me zgjedhjen?";
+    ViewBag.Message = "Kujdes! Ju po fshini dokumentin e Subjektit " + Model.LlojiDokumentit.Inspektim.Subjekt.Emri + " te cilit i perket institucionit Inspektues Shteterore " + Model.LlojiDokumentit.Inspektim.Emri + ". Deshironi te procedoni me zgjedhjen?";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -13,6 +13,6 @@
 
     <div class="form-actions no-color" align="right">
         <input type="submit" value="Fshi" class="btn btn-danger" />
-        @Html.ActionLink("Anulo", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Anulo", "Index", new { InspektimId = Model.LlojiDokumentitId }, new { @class = "btn btn-warning" })
     </div>
 }

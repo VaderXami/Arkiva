@@ -40,6 +40,6 @@ namespace Arkiva.Models
         public DateTime Data{ get; set; }
         public int SubjektId { get; set; }
         public virtual Subjekt Subjekt { get; set; }
-        public virtual ICollection<Dokument> Dokumente { get; set; }
+        public virtual ICollection<LlojiDokumentit> LlojiDokumentit { get; set; }
     }
 }

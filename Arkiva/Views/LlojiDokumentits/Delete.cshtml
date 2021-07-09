@@ -1,0 +1,39 @@
+﻿@model Arkiva.Models.LlojiDokumentit
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Fshi inspektimin e kryer nga " + Model.Emri + ". Nuk ka asnje dokument te ngarkuar.";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Dokumente.Any() == true)
+{
+    ViewBag.Numri = Model.Dokumente.Count();
+
+    if (ViewBag.Numri > 1)
+    {
+        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Inspektim.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokumente. Deshironi te procedoni me zgjedhjen?";
+    }
+    else
+    {
+        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Inspektim.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokument. Deshironi te procedoni me zgjedhjen?";
+    }
+
+}
+
+<h4 style="color: red; padding-top: 30px">@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color" align="right">
+        <input type="submit" value="Fshi" class="btn btn-danger" />
+        @Html.ActionLink("Anulo", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning" })
+    </div>
+}

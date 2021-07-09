@@ -21,7 +21,7 @@
         tmpp = tmp[1].AsInt();
     }
 
-    var list = db.Inspektim.Where(s => s.Id == tmpp).Select(i => i.SubjektId);
+    var list = db.LlojiDokumentit.Where(s => s.Id == tmpp).Select(i => i.InspektimId);
 
     if (!list.Any())
     {
@@ -33,34 +33,41 @@
         ViewBag.Id = tt;
     }
 
-    var inspektimEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Emri);
-    var subjektEmri = db.Inspektim.Where(x => x.Id == tmpp).Select(a => a.Subjekt.Emri);
+    var inspektimEmri = db.LlojiDokumentit.Where(x => x.Id == tmpp).Select(a => a.Emri);
+    var subjektEmri = db.LlojiDokumentit.Where(x => x.Id == tmpp).Select(a => a.Inspektim.Emri);
+    var subjektEmri2 = db.LlojiDokumentit.Where(x => x.Id == tmpp).Select(a => a.Inspektim.Subjekt.Emri);
+
 
     foreach (var dd in subjektEmri)
     {
-        ViewBag.SubjektName = dd;
+        ViewBag.InspektimName1 = dd;
+    }
+
+    foreach (var ee in subjektEmri2)
+    {
+        ViewBag.SubjektName = ee;
     }
 
     foreach (var item in inspektimEmri)
     {
-        ViewBag.InspektimName = "Lista e Dokumenteve per inspektimin nga " + item + " per Subjektin " + ViewBag.SubjektName;
+        ViewBag.InspektimName = "Kategoria e dokumentit " + item + " per Inspektimin nga " + ViewBag.InspektimName1 + " e Subjektit " + ViewBag.SubjektName;
     }
 
     ViewBag.Title = "Dokumente";
 }
-
 <h4>@ViewBag.InspektimName</h4>
+
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>
-        @Html.ActionLink("Ngarko Dokument", "Create", new { InspektimId = tmpp }, new { @class = "btn btn-success" })
-        @Html.ActionLink("Shko te Inspektimet", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Ngarko Dokument", "Create", new { LlojiDokumentitId = tmpp }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Shko te Lloji", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, new { @class = "btn btn-warning" })
     </div>
     @using (Html.BeginForm("Index", "Dokuments", FormMethod.Get))
     {
         <div>
             <p>
-                @Html.Hidden("InspektimId")
+                @Html.Hidden("LlojiDokumentitId")
                 @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin" }) <br />
                 <input type="submit" value="Kerko" class="btn btn-info" />
             </p>
@@ -69,9 +76,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Inspektim.Emri)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.FileName)
         </th>
@@ -84,9 +88,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inspektim.Emri)
-            </td>
             <td>
                 @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
                     {

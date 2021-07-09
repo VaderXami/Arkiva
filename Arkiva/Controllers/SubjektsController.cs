@@ -185,7 +185,7 @@ namespace Arkiva.Controllers
         *                                                                                                      AKU -> 4 Dokumenta
         * Return: Kthen nje Arkive duke perdorur File class.
        **/
-        public ActionResult DownloadZipFile(int id)
+  /*      public ActionResult DownloadZipFile(int id)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -194,7 +194,7 @@ namespace Arkiva.Controllers
                     var inspektime = db.Subjekt.Find(id).Inspektime;
                     foreach (var inspektim in inspektime )
                     {
-                        var dokumente = db.Inspektim.Find(inspektim.Id).Dokumente;
+                        var dokumente = db.Inspektim.Find(inspektim.Id).LlojiDokumentit;
                         foreach (var dokument in dokumente)
                         {
                             var file = archive.CreateEntry(inspektim.Emri + "/" + GetNewName(dokument.FileName.ToString()));
@@ -208,7 +208,7 @@ namespace Arkiva.Controllers
                 var subjekt = db.Subjekt.Find(id);
                 return File(memoryStream.ToArray(), "application/zip", subjekt.Emri + ".zip");
             }
-        }
+        }*/
 
         // GET: Subjekts/Edit/5
         /**

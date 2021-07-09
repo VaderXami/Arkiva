@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Arkiva.Models.LlojiDokumentit>
+
+@{
+    ViewBag.Title = "Lloji Dokumentit";
+    var url = Context.Request.Url;
+    string[] tmp = url.ToString().Split('=');
+
+    ArkivaDBContext db = new ArkivaDBContext();
+
+    var tmpp = 0;
+
+    if (tmp[1].Contains("&search"))
+    {
+        string[] nId = tmp[1].Split('&');
+        tmpp = nId[0].AsInt();
+    }
+    else
+    {
+        tmpp = tmp[1].AsInt();
+    }
+
+    if (db.Inspektim.Any(id => id.Id == tmpp))
+    {
+        var list = db.Inspektim.Find(tmpp);
+        <h4> Inspektim nga @list.Emri per Subjektin @list.Subjekt.Emri</h4>
+
+        ViewBag.Id = list.SubjektId;
+    }
+    else if (!db.Inspektim.Any(id => id.Id == tmpp))
+    {
+        Response.Redirect("PageNotFound");
+    }
+}
+
+<p>
+    <div align="right">
+        @if (Model.Count() == 0)
+        {
+            ViewBag.Total2 = "Nuk ka asnje lloji te krijuar.";
+        }
+        else
+        {
+            ViewBag.Total = "Nr total i inspektimeve: " + Model.Count();
+        }
+        <h4>@ViewBag.Total</h4>
+        @Html.ActionLink("Krijo Lloj", "Create", new { InspektimId = tmpp }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Shko te Inspektimet", "Index", "Inspektims", new { SubjektId = ViewBag.Id } , new { @class = "btn btn-warning" })
+    </div>
+    @using (Html.BeginForm("Index", "LlojiDokumentits", FormMethod.Get))
+    {
+        <div>
+            <p>
+                @Html.Hidden("InspektimId")
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Lloj Dokumenti" }) <br />
+                <input type="submit" value="Kerko" class="btn btn-info" />
+                <div class="text-danger">
+                    @ViewBag.Message
+                </div> <br />
+            </p>
+        </div>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Emri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Assets/folder.png" style="width:40px; height:40px" />
+                @Html.ActionLink(item.Emri, "Index", "Dokuments", new { LlojiDokumentitId = item.Id }, new { @style = "color: black; font-weight: 700" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td align="right">
+                @Html.ActionLink("Edito", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Permbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+<h5 class="text-danger">@ViewBag.Total2</h5>

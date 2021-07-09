@@ -28,6 +28,7 @@ namespace Arkiva.Models
     {
         public DbSet<Subjekt> Subjekt { get; set; }
         public DbSet<Inspektim> Inspektim { get; set; }
+        public DbSet<LlojiDokumentit> LlojiDokumentit { get; set; }
         public DbSet<Dokument> Dokument { get; set; }
     }
 }

@@ -6,9 +6,9 @@
 
 <h2>@ViewBag.Title</h2>
 
-@if (Model.Dokumente.Any() == true)
+@if (Model.LlojiDokumentit.Any() == true)
 {
-    ViewBag.Numri = Model.Dokumente.Count();
+    ViewBag.Numri = Model.LlojiDokumentit.Count();
 
     if (ViewBag.Numri > 1)
     {

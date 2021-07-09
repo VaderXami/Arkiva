@@ -39,12 +39,12 @@
             <h5 style="font-weight: 700">Nr. Dokumenteve</h5>
         </dt>
         <dd style="padding-bottom: 20px">
-            <h5>@Model.Dokumente.Count()</h5>
+            <h5>@Model.LlojiDokumentit.Count()</h5>
         </dd>
 
     </dl>
     <div align="right">
-        @if (Model.Dokumente.Any())
+        @if (Model.LlojiDokumentit.Any())
         {
             @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
         }
@@ -53,43 +53,18 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Dokumente.FirstOrDefault().FileName)
+                @Html.DisplayNameFor(model => model.LlojiDokumentit.FirstOrDefault().Emri)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dokumente.FirstOrDefault().Data)
+                @Html.DisplayNameFor(model => model.LlojiDokumentit.FirstOrDefault().Data)
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model.Dokumente)
+        @foreach (var item in Model.LlojiDokumentit)
         {
             <tr>
                 <td>
-                    @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
-                        {
-                            <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
-                        }
-                        else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
-                        {
-                            <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
-                        }
-                        else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
-                        {
-                            <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
-                        }
-                        else if (item.FileName.Contains(".xlsx"))
-                        {
-                            <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
-                        }
-                        else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
-                        {
-                            <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
-                        }
-                        else
-                        {
-                            <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
-                        }
-                    }
-                    @Html.DisplayFor(modelItem => item.FileName)
+                    @Html.DisplayFor(modelItem => item.Emri)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data)

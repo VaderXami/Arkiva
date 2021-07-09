@@ -337,22 +337,28 @@
     <Compile Include="Controllers\DokumentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\InspektimsController.cs" />
+    <Compile Include="Controllers\LlojiDokumentitsController.cs" />
     <Compile Include="Controllers\SubjektsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107071442173_initil.cs" />
-    <Compile Include="Migrations\202107071442173_initil.Designer.cs">
-      <DependentUpon>202107071442173_initil.cs</DependentUpon>
+    <Compile Include="Migrations\202107090653372_new.cs" />
+    <Compile Include="Migrations\202107090653372_new.Designer.cs">
+      <DependentUpon>202107090653372_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
     <Compile Include="Models\Inspektim.cs" />
+    <Compile Include="Models\LlojiDokumentit.cs" />
     <Compile Include="Models\Subjekt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Arkiva.mdf" />
+    <Content Include="App_Data\Arkiva_log.ldf">
+      <DependentUpon>Arkiva.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\excelicon.png" />
     <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
@@ -602,16 +608,18 @@
     <Content Include="Views\Dokuments\Delete.cshtml" />
     <Content Include="Views\Dokuments\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\LlojiDokumentits\Create.cshtml" />
+    <Content Include="Views\LlojiDokumentits\Delete.cshtml" />
+    <Content Include="Views\LlojiDokumentits\Details.cshtml" />
+    <Content Include="Views\LlojiDokumentits\Edit.cshtml" />
+    <Content Include="Views\LlojiDokumentits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107071442173_initil.resx">
-      <DependentUpon>202107071442173_initil.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107090653372_new.resx">
+      <DependentUpon>202107090653372_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

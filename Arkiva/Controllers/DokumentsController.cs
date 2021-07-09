@@ -68,19 +68,19 @@ namespace Arkiva.Controllers
          * Return: Kthen nje View e cila brenda ka listen e dokumentave te caktuara sipas kushteve te percaktuara me poshte.
         **/
 
-        public ActionResult Index(int InspektimId, string search)
+        public ActionResult Index(int LlojiDokumentitID, string search)
         {
 
-            var inspektimList = new List<string>();
-            var inspektimQy = from d in db.Inspektim orderby d.Id select d.Id.ToString();
+            var llojiList = new List<string>();
+            var llojiQy = from d in db.LlojiDokumentit orderby d.Id select d.Id.ToString();
             var dokument = from m in db.Dokument select m;
 
-            inspektimList.AddRange(inspektimQy.Distinct());
-            ViewBag.SubjektId = new SelectList(inspektimList.Where(s => s.Contains(InspektimId.ToString())));
+            llojiList.AddRange(llojiQy.Distinct());
+            ViewBag.SubjektId = new SelectList(llojiList.Where(s => s.Contains(LlojiDokumentitID.ToString())));
 
-            if (!String.IsNullOrEmpty(InspektimId.ToString()))
+            if (!String.IsNullOrEmpty(LlojiDokumentitID.ToString()))
             {
-                dokument = dokument.Where(s => s.InspektimId == InspektimId);
+                dokument = dokument.Where(s => s.LlojiDokumentitId == LlojiDokumentitID);
             }
             if (!String.IsNullOrEmpty(search))
             {
@@ -188,14 +188,14 @@ namespace Arkiva.Controllers
          *          InspektimId: Duke mar id e inspektimit e cila perkon me ate te subjektit jemi te gatshem qe te kryejme veprimet si me poshte. Eshte e tipit string pasi e marim nga url Id e sakte.
          * Return: Kthen View e metodes Create nxitur nga ActionResult.
         **/
-        public ActionResult Create(string InspektimId)
+        public ActionResult Create(string LlojiDokumentitId)
         {
-            var inspektimList = new List<string>();
-            var inspektimQy = from d in db.Inspektim orderby d.Id select d.Id.ToString();
+            var llojiList = new List<string>();
+            var llojiQy = from d in db.LlojiDokumentit orderby d.Id select d.Id.ToString();
             var dokument = from m in db.Dokument select m;
             
-            inspektimList.AddRange(inspektimQy.Distinct());
-            ViewBag.InspektimId = new SelectList(inspektimList.Where(s => s.Contains(InspektimId)));
+            llojiList.AddRange(llojiQy.Distinct());
+            ViewBag.LlojiDokumentitId = new SelectList(llojiList.Where(s => s.Contains(LlojiDokumentitId)));
             return View();
         }
 
@@ -204,7 +204,7 @@ namespace Arkiva.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Data,FileName,FileContent,InspektimId")] Dokument dokument, HttpPostedFileBase[] files)
+        public ActionResult Create([Bind(Include = "Id,Data,FileName,FileContent,LlojiDokumentitId")] Dokument dokument, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
@@ -219,10 +219,10 @@ namespace Arkiva.Controllers
                     dokument.Data = DateTime.Now;
                     db.Dokument.Add(dokument);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
+                    return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
                 }   
             }
-            ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", dokument.InspektimId);
+            ViewBag.LlojiDokumentitId = new SelectList(db.Inspektim, "Id", "Emri", dokument.LlojiDokumentitId);
             return View(dokument);
         }
 
@@ -262,7 +262,7 @@ namespace Arkiva.Controllers
             Dokument dokument = db.Dokument.Find(id);
             db.Dokument.Remove(dokument);
             db.SaveChanges();
-            return RedirectToAction("Index", "Dokuments", new { dokument.InspektimId });
+            return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
         }
 
         /**

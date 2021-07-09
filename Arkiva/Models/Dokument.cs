@@ -43,8 +43,8 @@ namespace Arkiva.Models
 
         [Display(Name = "Ngarko Dokument")]
         public HttpPostedFileBase[] Files { get; set; }
-        public int InspektimId { get; set; }
-        public virtual Inspektim Inspektim { get; set; }
+        public int LlojiDokumentitId { get; set; }
+        public virtual LlojiDokumentit LlojiDokumentit { get; set; }
 
         public static implicit operator Dokument(FileContentResult v)
         {
