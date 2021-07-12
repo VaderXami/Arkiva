@@ -50,26 +50,27 @@
 
     foreach (var item in inspektimEmri)
     {
-        ViewBag.InspektimName = "Kategoria e dokumentit " + item + " per Inspektimin nga " + ViewBag.InspektimName1 + " e Subjektit " + ViewBag.SubjektName;
+        ViewBag.InspektimName = "Kategoria e dokumentit " + item + " për Inspektimin nga " + ViewBag.InspektimName1 + " e Subjektit " + ViewBag.SubjektName;
     }
 
     ViewBag.Title = "Dokumente";
+
 }
 <h4>@ViewBag.InspektimName</h4>
 
 <p>
     <div align="right">
         <h4>@ViewBag.No</h4>
-        @Html.ActionLink("Ngarko Dokument", "Create", new { LlojiDokumentitId = tmpp }, new { @class = "btn btn-success" })
-        @Html.ActionLink("Shko te Lloji", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Ngarko Dokument", "Create", new { LlojiDokumentitId = tmpp }, new { @class = "btn btn-success", @style = "font-size: 12px" })
+        @Html.ActionLink("Shko te Lloji", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
     </div>
     @using (Html.BeginForm("Index", "Dokuments", FormMethod.Get))
     {
         <div>
             <p>
                 @Html.Hidden("LlojiDokumentitId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin" }) <br />
-                <input type="submit" value="Kerko" class="btn btn-info" />
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35" }) <br />
+                <input type="submit" value="Kerko" class="btn btn-info" style="font-size: 12px" />
             </p>
         </div>
     }
@@ -122,24 +123,38 @@
             <td align="right">
                 @{ if (item.FileName.Contains(".pdf"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })')" />
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
+                       // ViewBag.dokId = item.Id;
+
+                        /*<input type="button" data-toggle="modal" class="btn btn-primary" value="Pdf" data-modal-id="popupwindow" data-target="#exampleModal" />
+                        <!-- Large modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <object style="width: 500px; height: 600px; overflow: hidden" type="application/pdf" data="@Url.Action("PreviewFilePDF", "Dokuments", new { id = item.Id })"></object>
+                                </div>
+                            </div>
+                        </div>*/
+
                     }
                     if (item.FileName.Contains(".jpg"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFileJpg", "Dokuments" , new { id = item.Id })')" />
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFileJpg", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
                     }
                     if (item.FileName.Contains(".png"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePNG", "Dokuments" , new { id = item.Id })')" />
+                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePNG", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
                     }
                 }
-                @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
             </td>
         </tr>
     }
-
 </table>
+
 <div class="text-danger">
     @ViewBag.Message
 </div>

@@ -34,23 +34,23 @@
     <div align="right">
         @if (Model.Count() == 0)
         {
-            ViewBag.Total2 = "Nuk ka asnje inspektim te kryer.";
+            ViewBag.Total2 = "Nuk ka asnjë inspektim të kryer.";
         }
         else
         {
             ViewBag.Total = "Nr total i inspektimeve: " + Model.Count();
         }
         <h4>@ViewBag.Total</h4>
-        @Html.ActionLink("Krijo Inspektim", "Create", new { SubjektId = tmpp }, new { @class = "btn btn-success" })
-        @Html.ActionLink("Shko te Subjektet", "Index", "Subjekts", null, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Krijo Inspektim", "Create", new { SubjektId = tmpp }, new { @class = "btn btn-success", @style = "font-size: 12px" })
+        @Html.ActionLink("Shko te Subjektet", "Index", "Subjekts", null, new { @class = "btn btn-warning", @style = "font-size: 12px" })
     </div>
     @using (Html.BeginForm("Index", "Inspektims", FormMethod.Get))
     {
         <div>
             <p>
                 @Html.Hidden("SubjektId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Inspektimin" }) <br />
-                <input type="submit" value="Kerko" class="btn btn-info" />
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Inspektimin", maxlength = "35" }) <br />
+                <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px"/>
                 <div class="text-danger">
                     @ViewBag.Message
                 </div> <br />
@@ -66,25 +66,30 @@
         <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrInspektimit)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <img src="~/Assets/folder.png" style="width:40px; height:40px" />
-                @Html.ActionLink(item.Emri, "Index", "LlojiDokumentits", new { InspektimId = item.Id }, new { @style = "color: black; font-weight: 700" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td align="right">
-                @Html.ActionLink("Edito", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Permbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
-                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        <img src="~/Assets/folder.png" style="width:40px; height:40px" />
+        @Html.ActionLink(item.Emri, "Index", "LlojiDokumentits", new { InspektimId = item.Id }, new { @style = "color: black; font-weight: 700" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NrInspektimit)
+    </td>
+    <td align="right">
+        @Html.ActionLink("Modifiko", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
+        @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
+        @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+    </td>
+</tr>
     }
 
 </table>

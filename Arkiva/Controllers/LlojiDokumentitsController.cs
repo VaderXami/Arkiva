@@ -28,7 +28,7 @@ namespace Arkiva.Controllers
             {
                 lloji = lloji.Where(s => s.InspektimId == InspektimId);
             }
-            if (!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrWhiteSpace(search))
             {
                 lloji = lloji.Where(x => x.Emri.Contains(search));
                 if (!lloji.Any())
@@ -111,7 +111,7 @@ namespace Arkiva.Controllers
             {
                 db.Entry(llojiDokumentit).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "LlojiDokumentits", new { InspektimId = llojiDokumentit.InspektimId });
             }
             ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", llojiDokumentit.InspektimId);
             return View(llojiDokumentit);

@@ -31,12 +31,18 @@ namespace Arkiva.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Vendosni emrin e Institucionit Inspektues!")]
-        [Display(Name = "Emri Institucionit Shteterore")]
+        [Display(Name = "Emri Institucionit Shtetërorë")]
+        [MaxLength(35, ErrorMessage = "Emri Inspektimit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 
-        [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
+
+        [Required(ErrorMessage = "Vendosni Nr. Inspektimit.")]
+        [Display(Name = "Nr. Inspektimit")]
+        public int NrInspektimit { get; set; }
+
+        [Required(ErrorMessage = "Vendosni datën përkatëse të regjistrimit!")]
         [Display(Name = "Data e Kontrollit")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data{ get; set; }
         public int SubjektId { get; set; }
         public virtual Subjekt Subjekt { get; set; }

@@ -1,14 +1,15 @@
 ﻿@model Arkiva.Models.LlojiDokumentit
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Modifiko";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edito</h2>
+<h4>@ViewBag.Title</h4>
+<h4>@Model.Inspektim.Subjekt.Emri/@Model.Inspektim.Emri/@Model.Emri</h4>
 
 <div align="right">
-    @Html.ActionLink("Anulo Editim", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Anullo Modifikim", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm())
@@ -16,13 +17,12 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Lloji Dokumentit</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
+        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <span style="color:#ff0000">*</span>  @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control datepicker" }, autocomplete = "off" })
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
@@ -46,7 +46,7 @@
     </div>
     <div class="form-group" style="padding-top: 30px">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-success" />
+            <input type="submit" value="Ruaj" class="btn btn-success" style="font-size: 12px" />
         </div>
     </div>
 </div>
@@ -80,6 +80,7 @@
                 yearSuffix: '',
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: "dd/mm/yy"
             });
         });
     </script>

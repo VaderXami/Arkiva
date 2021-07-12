@@ -13,7 +13,7 @@
 
 
 <div align="right">
-    @Html.ActionLink("Anulo", "Index", new { InspektimId = lloji[1].AsInt() }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Anullo", "Index", new { InspektimId = lloji[1].AsInt() }, new { @class = "btn btn-warning" })
 </div>
 
 @using (Html.BeginForm())
@@ -84,6 +84,7 @@
                 yearSuffix: '',
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: "dd/mm/yy"
             });
         });
     </script>

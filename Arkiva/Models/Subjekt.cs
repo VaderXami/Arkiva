@@ -28,13 +28,14 @@ namespace Arkiva.Models
     public class Subjekt
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Vendosni emrin e Subjektit perkates!")]
-        [Display(Name = "Emri Subjektit Perkates")]
+        [Required(ErrorMessage = "Vendosni emrin e Subjektit përkatës!")]
+        [Display(Name = "Emri Subjektit Përkatës")]
+        [MaxLength(35, ErrorMessage = "Emri Subjektit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 
-        [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Vendosni datën përkatëse të regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         public virtual ICollection<Inspektim> Inspektime { get; set; }
 

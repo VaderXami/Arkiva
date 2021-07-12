@@ -1,12 +1,12 @@
 ﻿@model Arkiva.Models.Inspektim
 
 @{
-    ViewBag.Title = "Permbajtja e Inspektimit kryer nga " + Model.Emri + " dhe i perket Subjektit " + Model.Subjekt.Emri;
+    ViewBag.Title = "Përmbajtja";
 }
 
 <h4>@ViewBag.Title</h4>
 <div align="right">
-    @Html.ActionLink("Shko Pas", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning" })
+    @Html.ActionLink("Shko Pas", "Index", new { SubjektId = Model.SubjektId }, new { @class="btn btn-warning", @style = "font-size: 12px" })
 </div>
 <div>
     <hr />
@@ -46,7 +46,7 @@
     <div align="right">
         @if (Model.LlojiDokumentit.Any())
         {
-            @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
         }
     </div>
 
@@ -64,6 +64,7 @@
         {
             <tr>
                 <td>
+                    <img src="~/Assets/folder.png" style="width: 30px; height: 30px" />
                     @Html.DisplayFor(modelItem => item.Emri)
                 </td>
                 <td>

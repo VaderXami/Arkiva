@@ -1,15 +1,15 @@
 ﻿@model Arkiva.Models.Subjekt
 
 @{
-    ViewBag.Title = "Edito Subjektin";
+    ViewBag.Title = "Modifiko";
 
     var date = Model.Data.ToString("mm/dd/yyyy");
 }
 
-<h4>@ViewBag.Title @Model.Emri</h4>
+<h4>@ViewBag.Title</h4>
 
 <div align="right">
-    @Html.ActionLink("Anulo Editim", "Index", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Anullo Modifikim", "Index", null, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm())
@@ -39,7 +39,7 @@
 
         <div class="form-group" style="padding-top: 30px">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Ruaj" class="btn btn-success" />
+                <input type="submit" value="Ruaj" class="btn btn-success" style="font-size: 12px" />
             </div>
         </div>
     </div>
@@ -73,6 +73,7 @@
                 yearSuffix: '',
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: "dd/mm/yy"
             });
         });
     </script>

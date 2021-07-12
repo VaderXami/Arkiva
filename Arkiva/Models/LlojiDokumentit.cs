@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Arkiva.Models
 {
@@ -10,13 +8,14 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Vendosni emrin e Institucionit Inspektues!")]
+        [Required(ErrorMessage = "Vendosni emrin e llojit të Dokumentit!")]
         [Display(Name = "Lloji i Dokumentit")]
+        [MaxLength(35, ErrorMessage = "Emri i Llojit te Dokumentit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 
-        [Required(ErrorMessage = "Vendosni daten perkatese te regjistrimit!")]
+        [Required(ErrorMessage = "Vendosni datën përkatëse të regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         public int InspektimId { get; set; }
         public virtual Inspektim Inspektim { get; set; }

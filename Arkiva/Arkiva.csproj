@@ -346,6 +346,18 @@
     <Compile Include="Migrations\202107090653372_new.Designer.cs">
       <DependentUpon>202107090653372_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107121324318_test.cs" />
+    <Compile Include="Migrations\202107121324318_test.Designer.cs">
+      <DependentUpon>202107121324318_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107121329002_test2.cs" />
+    <Compile Include="Migrations\202107121329002_test2.Designer.cs">
+      <DependentUpon>202107121329002_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107121435036_nrinspektim.cs" />
+    <Compile Include="Migrations\202107121435036_nrinspektim.Designer.cs">
+      <DependentUpon>202107121435036_nrinspektim.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -620,6 +632,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107090653372_new.resx">
       <DependentUpon>202107090653372_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121324318_test.resx">
+      <DependentUpon>202107121324318_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121329002_test2.resx">
+      <DependentUpon>202107121329002_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121435036_nrinspektim.resx">
+      <DependentUpon>202107121435036_nrinspektim.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,13 +1,13 @@
 ﻿@model Arkiva.Models.Subjekt
 
 @{
-    ViewBag.Title = "Permbajtja e subjektit " + Model.Emri;
+    ViewBag.Title = "Përmbajtja";
 }
 
 <h4>@ViewBag.Title</h4>
 
 <div align="right">
-    @Html.ActionLink("Shko Pas", "Index", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Shko Pas", "Index", null, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 <div>
@@ -38,7 +38,7 @@
         <div align="right">
             @if (Model.Inspektime.Any())
             {
-                @Html.ActionLink("Shkarko .zip", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Shkarko .zip", "DownloadZipFile", new { id = Model.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
             }
         </div>
     </dl>

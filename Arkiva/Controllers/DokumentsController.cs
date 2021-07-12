@@ -82,13 +82,13 @@ namespace Arkiva.Controllers
             {
                 dokument = dokument.Where(s => s.LlojiDokumentitId == LlojiDokumentitID);
             }
-            if (!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrWhiteSpace(search))
             {
                 dokument = dokument.Where(x => x.FileName.Contains(search));
             }
             if (!dokument.Any())
             {
-                ViewBag.Message = "Nuk u gjend asnje Dokument!";
+                ViewBag.Message = "Nuk u gjend asnjë Dokument!";
             }
             int nb = 0;
             foreach (var item in dokument)
@@ -171,7 +171,7 @@ namespace Arkiva.Controllers
         public ActionResult PreviewFilePNG(int id)
         {
             var dokument = db.Dokument.Find(id);
-            return File(dokument.FileContent, "image/png");
+            return PartialView(File(dokument.FileContent, "image/png"));
         }
         // GET: Dokuments/Create
         /**

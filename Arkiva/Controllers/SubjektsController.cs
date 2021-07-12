@@ -9,10 +9,10 @@
 **/
 
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -63,7 +63,7 @@ namespace Arkiva.Controllers
         **/
         public ActionResult Index(string search)
         {
-            if (!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrWhiteSpace(search))
             {
                 var subjekt = db.Subjekt.Where(s => s.Emri.Contains(search));
                 if (subjekt.Any())
@@ -74,7 +74,6 @@ namespace Arkiva.Controllers
                 else
                 {
                     ViewBag.Message = "Subjekti nuk u gjend!";
-
                     return View(subjekt);
                 }
             }

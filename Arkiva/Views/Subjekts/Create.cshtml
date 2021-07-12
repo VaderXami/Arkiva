@@ -1,12 +1,12 @@
 ﻿@model Arkiva.Models.Subjekt
 
 @{
-    ViewBag.Title = "Krijo Subjekt te ri";
+    ViewBag.Title = "Krijo Subjekt të ri";
 }
 
 <h4>@ViewBag.Title</h4>
 <div align="right">
-    @Html.ActionLink("Anulo", "Index", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Anullo", "Index", null, new { @class = "btn btn-warning" })
 </div>
 
 @using (Html.BeginForm()) 
@@ -68,6 +68,7 @@
                 yearSuffix: '',
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: "dd/mm/yy",
             });
         });
     </script>

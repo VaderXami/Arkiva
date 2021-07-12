@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -80,7 +79,7 @@ namespace Arkiva.Controllers
             {
                 inspektim = inspektim.Where(s => s.SubjektId == SubjektId);
             }
-            if (!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrWhiteSpace(search))
             {
                 inspektim = inspektim.Where(x => x.Emri.Contains(search));
                 if (!inspektim.Any())
@@ -203,7 +202,7 @@ namespace Arkiva.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Emri,Data,SubjektId")] Inspektim inspektim)
+        public ActionResult Create([Bind(Include = "Id,Emri,Data,NrInspektimit,SubjektId")] Inspektim inspektim)
         {
             if (ModelState.IsValid)
             {
@@ -250,7 +249,7 @@ namespace Arkiva.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Emri,Data,SubjektId")] Inspektim inspektim)
+        public ActionResult Edit([Bind(Include = "Id,Emri,Data,NrInspektimit,SubjektId")] Inspektim inspektim)
         {
             if (ModelState.IsValid)
             {
@@ -300,7 +299,6 @@ namespace Arkiva.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Inspektims", new { inspektim.SubjektId });
         }
-
 
         /**
          * Data: 10/06/2021
