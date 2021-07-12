@@ -289,6 +289,7 @@ namespace Arkiva.Controllers
             Subjekt subjekt = db.Subjekt.Find(id);
             db.Subjekt.Remove(subjekt);
             db.SaveChanges();
+           // Session["success"] = "Fshirja u krye me sukses";
             return RedirectToAction("Index");
         }
 

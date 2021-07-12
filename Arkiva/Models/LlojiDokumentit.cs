@@ -8,12 +8,12 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Vendosni emrin e llojit të Dokumentit!")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!")]
         [Display(Name = "Lloji i Dokumentit")]
         [MaxLength(35, ErrorMessage = "Emri i Llojit te Dokumentit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 
-        [Required(ErrorMessage = "Vendosni datën përkatëse të regjistrimit!")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
