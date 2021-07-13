@@ -75,16 +75,18 @@
         </div>
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FileName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-primary">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th></th>
+            <th align="right">
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -117,39 +119,92 @@
                 }
                 @Html.DisplayFor(modelItem => item.FileName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td align="right">
+            <td align="left">
                 @{ if (item.FileName.Contains(".pdf"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
-                       // ViewBag.dokId = item.Id;
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
 
-                        /*<input type="button" data-toggle="modal" class="btn btn-primary" value="Pdf" data-modal-id="popupwindow" data-target="#exampleModal" />
-                        <!-- Large modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-
-                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <object style="width: 500px; height: 600px; overflow: hidden" type="application/pdf" data="@Url.Action("PreviewFilePDF", "Dokuments", new { id = item.Id })"></object>
+                        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
+                            <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
+                                <div class="modal-content modal-lg" style="height: 900px">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>*/
-
+                        </div>
                     }
                     if (item.FileName.Contains(".jpg"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFileJpg", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1" style="font-size: 12px">Shiko</button>
+
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content modal-lg">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     }
                     if (item.FileName.Contains(".png"))
                     {
-                        <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePNG", "Dokuments" , new { id = item.Id })')" style = "font-size: 12px" />
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
+
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                            <div class="modal-dialog modal-lg" role="document" style="width: 1024px; height: 1024px">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="width: 100%; height: 100%">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:image/png;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 }
                 @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
                 @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
             </td>
         </tr>
     }

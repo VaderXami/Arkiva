@@ -33,10 +33,10 @@ namespace Arkiva.Models
         [MaxLength(35, ErrorMessage = "Emri Subjektit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        public DateTime Data { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Data { get; set; }
         public virtual ICollection<Inspektim> Inspektime { get; set; }
 
     }

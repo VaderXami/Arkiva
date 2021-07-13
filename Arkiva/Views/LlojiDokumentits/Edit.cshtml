@@ -22,7 +22,7 @@
     @Html.HiddenFor(model => model.Id)
 
     <div class="form-group">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2" })
+        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <span style="color:#ff0000">*</span>  @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <span style="color:#ff0000">*</span>  @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control datepicker" }, autocomplete = "off" })
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
@@ -83,5 +83,24 @@
                 dateFormat: "dd/mm/yy"
             });
         });
+
+        $(function () {
+            $.validator.addMethod('date',
+                function (value, element) {
+                    if (this.optional(element)) {
+                        return true;
+                    }
+                    var valid = true;
+                    try {
+                        $.datepicker.parseDate('dd/mm/yy', value);
+                    }
+                    catch (err) {
+                        valid = false;
+                    }
+                    return valid;
+                });
+            $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+
     </script>
 }

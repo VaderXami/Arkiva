@@ -58,18 +58,22 @@
         </div>
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Emri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NrInspektimit)
-        </th>
-    </tr>
+<table class="table table-primary">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Emri)
+            </th>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.NrInspektimit)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -79,15 +83,17 @@
         @Html.ActionLink(item.Emri, "Index", "LlojiDokumentits", new { InspektimId = item.Id }, new { @style = "color: black; font-weight: 700" })
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Data)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NrInspektimit)
-    </td>
-    <td align="right">
         @Html.ActionLink("Modifiko", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
         @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
         @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.NrInspektimit)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
     </td>
 </tr>
     }
