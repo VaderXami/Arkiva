@@ -82,6 +82,28 @@ namespace Arkiva.Controllers
             if (!String.IsNullOrWhiteSpace(search))
             {
                 inspektim = inspektim.Where(x => x.Emri.Contains(search));
+                if (search.Trim().Contains(";"))
+                {
+                    List<Inspektim> listInspektime = new List<Inspektim>();
+                    string[] emrat = search.Split(';');
+                    foreach (string tmp in emrat)
+                    {
+                        var sub = db.Inspektim.Where(s => s.SubjektId == SubjektId);
+                        var tempList = sub.Where(x => x.Emri.Contains(tmp));
+                        listInspektime.AddRange(tempList);
+                        listInspektime = listInspektime.Distinct().ToList();
+                    }
+                    if (listInspektime.Any())
+                    {
+                        ViewBag.Message = "";
+                        return View(listInspektime);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Subjekti nuk u gjend!";
+                        return View(listInspektime);
+                    }
+                }
                 if (!inspektim.Any())
                 {
                     ViewBag.Message = "Nuk u gjend asnje Inspektim!";
