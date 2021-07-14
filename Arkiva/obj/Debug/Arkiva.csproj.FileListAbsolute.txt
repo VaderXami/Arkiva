@@ -977,7 +977,6 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\ru\Microsoft.VisualStudio.Services.We
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
-C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations._new.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.test.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.test2.resources

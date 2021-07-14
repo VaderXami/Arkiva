@@ -10,7 +10,7 @@
 <h4>@ViewBag.Title</h4>
 
 <div align="right">
-    @Html.ActionLink("Anullo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+    @Html.ActionLink("Anulo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm("Create", "Dokuments", FormMethod.Post, new { @id = "registerFormId" ,enctype = "multipart/form-data" }))
@@ -29,11 +29,42 @@
 
         <div class="form-group" style="padding-top: 10px">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="col-md-10">
+            <style>
 
-                @Html.TextBoxFor(model => model.Files, "", new { type = "file", required = "required" })
-                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
-            </div>
+                .label1{
+                    background-color: indigo;
+                    color: white;
+                    padding: 0.5rem;
+                    font-family: sans-serif;
+                    border-radius: 0.3rem;
+                    cursor: pointer;
+                    margin-top: 1rem;
+                }
+
+                .inputfile {
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                    .inputfile:focus + label {
+                        outline: 1px dotted #000;
+                        outline: -webkit-focus-ring-color auto 5px;
+                    }
+
+                    .inputfile + label * {
+                        pointer-events: none;
+                    }
+            </style>
+            <input type='file' id="getFile" name="Files" class="inputfile" required title="Ju lutem, ngarkoni dokumentin!">
+            <label for="getFile" class="label1">Ngarko Dokument</label>
+
+            @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+        </div>
             @ViewBag.FileStatus
         </div>
 
@@ -52,3 +83,10 @@
         </div>
     </div>
 }
+
+<script>
+    jQuery.extend(
+        jQuery.validator.messages, {
+            required: "Hello World"
+    });
+</script>

@@ -22,6 +22,7 @@
     {
         var list = db.Subjekt.Find(tmpp);
         <h4>Subjekti @list.Emri</h4>
+        <h4>@Html.ActionLink(@list.Emri + "/", "Index", "Subjekts", null, null)</h4>
     }
     else if (!db.Subjekt.Any(id => id.Id == tmpp))
     {
@@ -29,7 +30,6 @@
     }
 
 }
-
 <p>
     <div align="right">
         @if (Model.Count() == 0)
@@ -49,8 +49,13 @@
         <div>
             <p>
                 @Html.Hidden("SubjektId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Inspektimin", maxlength = "35" }) <br />
-                <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px"/>
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Inspektimin", maxlength = "35", @id = "myInput" }) <br />
+                <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
+                <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
                 <div class="text-danger">
                     @ViewBag.Message
                 </div> <br />
@@ -58,7 +63,7 @@
         </div>
     }
 </p>
-<table class="table table-primary">
+<table class="table table-secondary">
     <thead class="thead-dark">
         <tr>
             <th>
@@ -77,25 +82,25 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        <img src="~/Assets/folder.png" style="width:40px; height:40px" />
-        @Html.ActionLink(item.Emri, "Index", "LlojiDokumentits", new { InspektimId = item.Id }, new { @style = "color: black; font-weight: 700" })
-    </td>
-    <td>
-        @Html.ActionLink("Modifiko", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
-        @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
-        @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
-    </td>
+        <tr>
+            <td>
+                <img src="~/Assets/folder.png" style="width:40px; height:40px" />
+                @Html.ActionLink(item.Emri, "Index", "LlojiDokumentits", new { InspektimId = item.Id }, new { @style = "color: black; font-weight: 700" })
+            </td>
+            <td style="padding-top: 12px">
+                @Html.ActionLink("Modifiko", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
+                @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.NrInspektimit)
-    </td>
+            <td style="padding-top: 15px; padding-left: 30px">
+                @Html.DisplayFor(modelItem => item.NrInspektimit)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Data)
-    </td>
-</tr>
+            <td style="padding-top: 15px; padding-left: 30px">
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
     }
 
 </table>

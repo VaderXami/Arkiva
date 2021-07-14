@@ -208,19 +208,21 @@ namespace Arkiva.Controllers
         {
             if (ModelState.IsValid)
             {
-                foreach (HttpPostedFileBase Files in files)
+                if (files != null || files.Length != 0)
                 {
-                    Stream str = Files.InputStream;
-                    BinaryReader Br = new BinaryReader(str);
-                    Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
-                    
-                    dokument.FileName = Files.FileName;
-                    dokument.FileContent = FileDet;
-                    dokument.Data = DateTime.Now;
-                    db.Dokument.Add(dokument);
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
-                }   
+                    foreach (HttpPostedFileBase Files in files)
+                    {
+                        Stream str = Files.InputStream;
+                        BinaryReader Br = new BinaryReader(str);
+                        Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
+                        dokument.FileName = Files.FileName;
+                        dokument.FileContent = FileDet;
+                        dokument.Data = DateTime.Now;
+                        db.Dokument.Add(dokument);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
+                    }
+                }
             }
             ViewBag.LlojiDokumentitId = new SelectList(db.Inspektim, "Id", "Emri", dokument.LlojiDokumentitId);
             return View(dokument);
