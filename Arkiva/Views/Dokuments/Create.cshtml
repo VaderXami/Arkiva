@@ -8,6 +8,9 @@
 }
 
 <h4>@ViewBag.Title</h4>
+<div class="alert alert-success fade in hide" role="alert" id="alertId">
+    Dokumenti u ngarkua me sukses!
+</div>
 
 <div align="right">
     @Html.ActionLink("Anulo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
@@ -31,15 +34,13 @@
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <style>
-
-                .label1{
-                    background-color: indigo;
+                .label1 {
+                    background-color: black;
                     color: white;
                     padding: 0.5rem;
                     font-family: sans-serif;
                     border-radius: 0.3rem;
                     cursor: pointer;
-                    margin-top: 1rem;
                 }
 
                 .inputfile {
@@ -62,7 +63,14 @@
             </style>
             <input type='file' id="getFile" name="Files" class="inputfile" required title="Ju lutem, ngarkoni dokumentin!">
             <label for="getFile" class="label1">Ngarko Dokument</label>
-
+            <script>
+                function getInputValue() {
+                    var inputVal = document.getElementById("getFile").value;
+                    if (inputVal.length != 0) {
+                        document.getElementById('alertId').classList.remove('hide')
+                    }
+                }
+            </script>
             @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
         </div>
             @ViewBag.FileStatus
@@ -78,7 +86,8 @@
 
         <div class="form-group" style="padding-top: 30px">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Shto" class="btn btn-success", style = "font-size: 12px" />
+
+                <input type="submit" onclick="getInputValue()" value="Shto" class="btn btn-success" , style="font-size: 12px" />
             </div>
         </div>
     </div>
