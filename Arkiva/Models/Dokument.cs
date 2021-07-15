@@ -60,10 +60,13 @@ namespace Arkiva.Models
         [Display(Name = "Nr. Kutisë")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë!")]
         public int NrKutis { get; set; }
-        
+
         [Display(Name = "Rafti Përkatës")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës!")]
         public int Rafti { get; set; }
+        [Display(Name = "Fusha e Indeksimit")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën e Indeksimit!")]
+        public int Indeksimi { get; set; }
         public int LlojiDokumentitId { get; set; }
         public virtual LlojiDokumentit LlojiDokumentit { get; set; }
 

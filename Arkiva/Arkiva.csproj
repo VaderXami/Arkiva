@@ -378,6 +378,10 @@
     <Compile Include="Migrations\202107151120109_zyranumrirafti2.Designer.cs">
       <DependentUpon>202107151120109_zyranumrirafti2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107151226000_fushaindeksimit.cs" />
+    <Compile Include="Migrations\202107151226000_fushaindeksimit.Designer.cs">
+      <DependentUpon>202107151226000_fushaindeksimit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1332,6 +1336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107151120109_zyranumrirafti2.resx">
       <DependentUpon>202107151120109_zyranumrirafti2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151226000_fushaindeksimit.resx">
+      <DependentUpon>202107151226000_fushaindeksimit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

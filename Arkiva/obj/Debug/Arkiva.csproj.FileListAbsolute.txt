@@ -991,3 +991,5 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.dll
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.pdb
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.zyranumrirafti1.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.zyranumrirafti2.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.AssemblyReference.cache
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.fushaindeksimit.resources

@@ -248,7 +248,7 @@ namespace Arkiva.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Data,FileName,FileContent,LlojiDokumentitId,Zyra,NrKutis,Rafti")] Dokument dokument, HttpPostedFileBase[] files)
+        public ActionResult Create([Bind(Include = "Id,Data,FileName,FileContent,LlojiDokumentitId,Zyra,NrKutis,Rafti,Indeksimi")] Dokument dokument, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
