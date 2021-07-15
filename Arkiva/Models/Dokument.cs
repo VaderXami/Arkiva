@@ -48,10 +48,22 @@ namespace Arkiva.Models
 
         public String FileName { get; set; }
         public byte[] FileContent { get; set; }
-        [NotMapped]
 
+        [NotMapped]
         [Display(Name = "Ngarko Dokument")]
         public HttpPostedFileBase[] Files { get; set; }
+
+        [Display(Name = "Zyra e Dokumentit")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit!")]
+        public string Zyra { get; set; }
+
+        [Display(Name = "Nr. Kutisë")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë!")]
+        public int NrKutis { get; set; }
+        
+        [Display(Name = "Rafti Përkatës")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës!")]
+        public int Rafti { get; set; }
         public int LlojiDokumentitId { get; set; }
         public virtual LlojiDokumentit LlojiDokumentit { get; set; }
 

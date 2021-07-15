@@ -366,6 +366,18 @@
     <Compile Include="Migrations\202107150923462_new vlues .Designer.cs">
       <DependentUpon>202107150923462_new vlues .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107151105446_zyranumrirafti.cs" />
+    <Compile Include="Migrations\202107151105446_zyranumrirafti.Designer.cs">
+      <DependentUpon>202107151105446_zyranumrirafti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107151113291_zyranumrirafti1.cs" />
+    <Compile Include="Migrations\202107151113291_zyranumrirafti1.Designer.cs">
+      <DependentUpon>202107151113291_zyranumrirafti1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107151120109_zyranumrirafti2.cs" />
+    <Compile Include="Migrations\202107151120109_zyranumrirafti2.Designer.cs">
+      <DependentUpon>202107151120109_zyranumrirafti2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1311,6 +1323,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107150923462_new vlues .resx">
       <DependentUpon>202107150923462_new vlues .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151105446_zyranumrirafti.resx">
+      <DependentUpon>202107151105446_zyranumrirafti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151113291_zyranumrirafti1.resx">
+      <DependentUpon>202107151113291_zyranumrirafti1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151120109_zyranumrirafti2.resx">
+      <DependentUpon>202107151120109_zyranumrirafti2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
