@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -105,6 +107,35 @@ namespace Arkiva.Controllers
             ViewBag.InspektimId = new SelectList(db.Inspektim, "Id", "Emri", llojiDokumentit.InspektimId);
             return View(llojiDokumentit);
         }
+        public string GetNewName(string filename)
+        {
+            string ext = Path.GetExtension(filename);
+            string name = Path.GetFileNameWithoutExtension(filename);
+
+            string newFileName = name + "_" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ext;
+            return newFileName;
+        }
+        /*public ActionResult DownloadZipFile(int id)
+        {
+            var dokument = db.Dokument.Where(i => i.LlojiDokumentitId == id).ToList();
+
+            using (var memoryStream = new MemoryStream())
+            {
+                using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    foreach (var doc in dokument)
+                    {
+                        var file = archive.CreateEntry(doc.LlojiDokumentit.Inspektim.Emri + "/" + doc.LlojiDokumentit.Emri + "/" + GetNewName(doc.FileName.ToString()));
+                        using (var stream = file.Open())
+                        {
+                            stream.Write(doc.FileContent, 0, doc.FileContent.Length);
+                        }
+                    }
+                }
+                var inspektim = db.Inspektim.Find(id);
+                return File(memoryStream.ToArray(), "application/zip", inspektim.Emri + ".zip");
+            }
+        }*/
 
         // GET: LlojiDokumentits/Edit/5
         public ActionResult Edit(int? id)

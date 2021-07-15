@@ -70,7 +70,6 @@ namespace Arkiva.Controllers
 
         public ActionResult Index(int LlojiDokumentitID, string search)
         {
-
             var llojiList = new List<string>();
             var llojiQy = from d in db.LlojiDokumentit orderby d.Id select d.Id.ToString();
             var dokument = from m in db.Dokument select m;
@@ -84,7 +83,28 @@ namespace Arkiva.Controllers
             }
             if (!String.IsNullOrWhiteSpace(search))
             {
-                dokument = dokument.Where(x => x.FileName.Contains(search));
+                if (search.All(char.IsDigit))
+                {
+                    var item1 = dokument.Where(x => x.NrKutis.ToString().Contains(search));
+                    if (!item1.Any())
+                    {
+                        item1 = dokument.Where(x => x.Rafti.ToString().Contains(search));
+                    }
+                    if (!item1.Any())
+                    {
+                        item1 = dokument.Where(x => x.Indeksimi.ToString().Contains(search));
+                    }
+                    dokument = item1;
+                }
+                else
+                {
+                    var item = dokument.Where(x => x.FileName.Contains(search));
+                    if (!item.Any())
+                    {
+                        item = dokument.Where(x => x.Zyra.Contains(search));
+                    }
+                    dokument = item;
+                }
                 if (search.Trim().Contains(";"))
                 {
                     List<Dokument> listDokumente = new List<Dokument>();

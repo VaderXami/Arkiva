@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -81,7 +82,13 @@ namespace Arkiva.Controllers
             }
             if (!String.IsNullOrWhiteSpace(search))
             {
-                inspektim = inspektim.Where(x => x.Emri.Contains(search));
+                if (search.All(char.IsDigit))
+                {
+                    inspektim = inspektim.Where(d => d.NrInspektimit.ToString().Contains(search));
+                } else
+                {
+                    inspektim = inspektim.Where(x => x.Emri.Contains(search));
+                }
                 if (search.Trim().Contains(";"))
                 {
                     List<Inspektim> listInspektime = new List<Inspektim>();
@@ -177,25 +184,28 @@ namespace Arkiva.Controllers
          *          qe te shkarkojme ato qe i perkasin ketij Inspektimi specifik. Shembull: Akshi -> 10 Dokumenta, AKU -> 4 Dokumenta
          * Return: Kthen nje Arkive duke perdorur File class.
         **/
-        /*public ActionResult DownloadZipFile(int id)
+       /* public ActionResult DownloadZipFile(int id)
         {
-            var dokument = db.Dokument.Where(i => i.LlojiDokumentitId == id).ToList();
-
             using (var memoryStream = new MemoryStream())
             {
                 using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
                 {
-                    foreach (var doc in dokument)
+                    var llojDokumentit = db.Inspektim.Find(id).LlojiDokumentit;
+                    foreach (var lloj in llojDokumentit)
                     {
-                        var file = archive.CreateEntry(doc.LlojiDokumentit.Inspektim.Emri +"/"+ doc.LlojiDokumentit.Emri + "/" + GetNewName(doc.FileName.ToString()));
-                        using (var stream = file.Open())
+                        var dokumente = db.Inspektim.Find(lloj.Id).LlojiDokumentit;
+                        foreach (var dokument in dokumente)
                         {
-                            stream.Write(doc.FileContent, 0, doc.FileContent.Length);
+                            var file = archive.CreateEntry(lloj.Emri + "/" + GetNewName(dokument.FileName.ToString()));
+                            using (var stream = file.Open())
+                            {
+                                stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);
+                            }
                         }
                     }
                 }
-                var inspektim = db.Inspektim.Find(id);
-                return File(memoryStream.ToArray(), "application/zip", inspektim.Emri + ".zip");
+                var subjekt = db.Subjekt.Find(id);
+                return File(memoryStream.ToArray(), "application/zip", subjekt.Emri + ".zip");
             }
         }*/
 

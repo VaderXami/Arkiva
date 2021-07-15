@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -205,7 +206,8 @@ namespace Arkiva.Controllers
         *                                                                                                      AKU -> 4 Dokumenta
         * Return: Kthen nje Arkive duke perdorur File class.
        **/
-  /*      public ActionResult DownloadZipFile(int id)
+        
+        public ActionResult DownloadZipFile(int id)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -214,13 +216,17 @@ namespace Arkiva.Controllers
                     var inspektime = db.Subjekt.Find(id).Inspektime;
                     foreach (var inspektim in inspektime )
                     {
-                        var dokumente = db.Inspektim.Find(inspektim.Id).LlojiDokumentit;
-                        foreach (var dokument in dokumente)
+                        var llojiDokumentit = db.Inspektim.Find(inspektim.Id).LlojiDokumentit;
+                        foreach (var lloji in llojiDokumentit)
                         {
-                            var file = archive.CreateEntry(inspektim.Emri + "/" + GetNewName(dokument.FileName.ToString()));
-                            using (var stream = file.Open())
+                            var dokumente = db.LlojiDokumentit.Find(lloji.Id).Dokumente;
+                            foreach (var dokument in dokumente)
                             {
-                                stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);
+                                var file = archive.CreateEntry(inspektim.Emri + "/" + lloji.Emri + "/" + GetNewName(dokument.FileName.ToString()));
+                                using (var stream = file.Open())
+                                {
+                                    stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);
+                                }
                             }
                         }
                     }
@@ -228,7 +234,7 @@ namespace Arkiva.Controllers
                 var subjekt = db.Subjekt.Find(id);
                 return File(memoryStream.ToArray(), "application/zip", subjekt.Emri + ".zip");
             }
-        }*/
+        }
 
         // GET: Subjekts/Edit/5
         /**

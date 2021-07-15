@@ -2,32 +2,36 @@
 
 @{
     ViewBag.Title = "Përmbajtja";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h4>@ViewBag.Title</h4>
-<h4>@Model.Inspektim.Subjekt.Emri/@Model.Inspektim.Emri/@Model.Emri</h4>
-
 <div align="right">
     @Html.ActionLink("Shko Pas", "Index", new { InspektimId = Model.InspektimId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
-
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dropdown-menu-left">
+        <dt style="width: auto">
+            @Html.DisplayNameFor(model => model.Inspektim.Subjekt.Emri)
+        </dt>
+
+        <dd style="padding-bottom: 20px">
+            @Html.DisplayFor(model => model.Inspektim.Subjekt.Emri)
+        </dd>
+
+        <dt style="width: auto">
             @Html.DisplayNameFor(model => model.Inspektim.Emri)
         </dt>
 
-        <dd>
+        <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Inspektim.Emri)
         </dd>
 
-        <dt>
+        <dt style="width: auto">
             @Html.DisplayNameFor(model => model.Emri)
         </dt>
 
-        <dd>
+        <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Emri)
         </dd>
 
@@ -35,9 +39,70 @@
             @Html.DisplayNameFor(model => model.Data)
         </dt>
 
-        <dd>
+        <dd style="padding-bottom: 20px">
             @Html.DisplayFor(model => model.Data)
         </dd>
 
+        <dt>
+            <h5 style="font-weight: 700">Nr. Dokumenteve</h5>
+        </dt>
+        <dd style="padding-bottom: 20px">
+            <h5>@Model.Dokumente.Count()</h5>
+        </dd>
+
     </dl>
+    <div align="right">
+        @if (Model.Dokumente.Any())
+        {
+            @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info" })
+        }
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dokumente.FirstOrDefault().FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dokumente.FirstOrDefault().Data)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Dokumente)
+        {
+            <tr>
+                <td>
+                    @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
+                        {
+                            <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
+                        }
+                        else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+                        {
+                            <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
+                        }
+                        else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
+                        {
+                            <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
+                        }
+                        else if (item.FileName.Contains(".xlsx"))
+                        {
+                            <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+                        }
+                        else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
+                        {
+                            <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
+                        }
+                        else
+                        {
+                            <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
+                        }
+                    }
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
