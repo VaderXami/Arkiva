@@ -72,7 +72,7 @@ namespace Arkiva.Controllers
                     string[] emrat = search.Split(';');
                     foreach (string tmp in emrat)
                     {
-                        var tempList = db.Subjekt.Where(x => x.Emri.Contains(tmp));
+                        var tempList = db.Subjekt.Where(x => x.Emri.Contains(tmp.Trim()));
                         listSubjekte.AddRange(tempList);
                         listSubjekte = listSubjekte.Distinct().ToList();
                     }

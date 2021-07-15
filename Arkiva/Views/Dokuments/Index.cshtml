@@ -72,7 +72,7 @@
         <h4>@ViewBag.InspektimName</h4>
         <h4>
             
-            @Html.ActionLink(SubjektName + "/", "Index", "Subjekts", null, null)@Html.ActionLink(InspektimName1 + " " + nrInspektim2 + "/", "Index", "Inspektims", new { SubjektId = ViewBag.newSubjektId }, null)@Html.ActionLink(item + "/", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, null)
+            <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(SubjektName + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(InspektimName1 + " " + nrInspektim2 + "/", "Index", "Inspektims", new { SubjektId = ViewBag.newSubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(item + "/", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, null)
         </h4>
     }
 
@@ -91,7 +91,7 @@
         <div>
             <p>
                 @Html.Hidden("LlojiDokumentitId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35", @id = "myInput" }) <br />
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
                 <input type="submit" value="Kerko" class="btn btn-info" style="font-size: 12px" />
                 <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">

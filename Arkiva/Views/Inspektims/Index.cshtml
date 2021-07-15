@@ -22,7 +22,7 @@
     {
         var list = db.Subjekt.Find(tmpp);
         <h4>Subjekti @list.Emri</h4>
-        <h4>@Html.ActionLink(@list.Emri + "/", "Index", "Subjekts", null, null)</h4>
+        <h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(@list.Emri + "/", "Index", "Subjekts", null, null)</h4>
     }
     else if (!db.Subjekt.Any(id => id.Id == tmpp))
     {
@@ -49,7 +49,7 @@
         <div>
             <p>
                 @Html.Hidden("SubjektId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Inspektimin", maxlength = "35", @id = "myInput" }) <br />
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Inspektimin", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
                 <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
                 <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">

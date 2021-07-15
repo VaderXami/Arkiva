@@ -24,7 +24,7 @@
         var list = db.Inspektim.Find(tmpp);
         ViewBag.Id = list.SubjektId;
         <h4> Inspektim nga @list.Emri për Subjektin @list.Subjekt.Emri</h4>
-        <h4>  @Html.ActionLink(list.Subjekt.Emri + "/", "Index", "Subjekts", null, null)@Html.ActionLink(list.Emri + " " + list.NrInspektimit + "/", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, null)</h4>
+        <h4> <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Subjekt.Emri + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Emri + " " + list.NrInspektimit + "/", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, null)</h4>
 
 
     }
@@ -53,7 +53,7 @@
         <div>
             <p>
                 @Html.Hidden("InspektimId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Lloj Dokumenti", maxlength = "35", @id = "myInput" }) <br />
+                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Lloj Dokumenti", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
                 <input type="submit" value="Kerko" class="btn btn-info" style="font-size: 12px" />
                 <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">

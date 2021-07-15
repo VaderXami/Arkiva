@@ -88,8 +88,8 @@ namespace Arkiva.Controllers
                     string[] emrat = search.Split(';');
                     foreach (string tmp in emrat)
                     {
-                        var sub = db.Inspektim.Where(s => s.SubjektId == SubjektId);
-                        var tempList = sub.Where(x => x.Emri.Contains(tmp));
+                        var ins = db.Inspektim.Where(s => s.SubjektId == SubjektId);
+                        var tempList = ins.Where(x => x.Emri.Contains(tmp.Trim()));
                         listInspektime.AddRange(tempList);
                         listInspektime = listInspektime.Distinct().ToList();
                     }
@@ -100,7 +100,7 @@ namespace Arkiva.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Subjekti nuk u gjend!";
+                        ViewBag.Message = "Inspektimi nuk u gjend!";
                         return View(listInspektime);
                     }
                 }

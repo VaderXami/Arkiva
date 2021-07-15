@@ -31,6 +31,28 @@ namespace Arkiva.Controllers
             if (!String.IsNullOrWhiteSpace(search))
             {
                 lloji = lloji.Where(x => x.Emri.Contains(search));
+                if (search.Trim().Contains(";"))
+                {
+                    List<LlojiDokumentit> listLloji = new List<LlojiDokumentit>();
+                    string[] emrat = search.Split(';');
+                    foreach (string tmp in emrat)
+                    {
+                        var lloj = db.LlojiDokumentit.Where(s => s.InspektimId == InspektimId);
+                        var tempList = lloj.Where(x => x.Emri.Contains(tmp.Trim()));
+                        listLloji.AddRange(tempList);
+                        listLloji = listLloji.Distinct().ToList();
+                    }
+                    if (listLloji.Any())
+                    {
+                        ViewBag.Message = "";
+                        return View(listLloji);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Lloji dokumentit nuk u gjend!";
+                        return View(listLloji);
+                    }
+                }
                 if (!lloji.Any())
                 {
                     ViewBag.Message = "Nuk u gjend asnje Lloj Dokumenti!";
