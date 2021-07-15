@@ -118,123 +118,123 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
-                    {
-                        <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
-                    }
-                    else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
-                    {
-                        <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
-                    }
-                    else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
-                    {
-                        <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
-                    }
-                    else if (item.FileName.Contains(".xlsx"))
-                    {
-                        <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
-                    }
-                    else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
-                    {
-                        <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
-                    }
-                    else
-                    {
-                        <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
-                    }
-                }
-                @Html.DisplayFor(modelItem => item.FileName)
-            </td>
-            <td align="left">
-                @{ if (item.FileName.Contains(".pdf"))
-                    {
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
+<tr>
+    <td>
+        @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
+            {
+                <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
+            }
+            else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+            {
+                <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
+            }
+            else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
+            {
+                <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
+            }
+            else if (item.FileName.Contains(".xlsx"))
+            {
+                <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+            }
+            else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
+            {
+                <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
+            }
+            else
+            {
+                <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
+            }
+        }
+        @Html.DisplayFor(modelItem => item.FileName)
+    </td>
+    <td align="left">
+        @{ if (item.FileName.Contains(".pdf"))
+            {
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
 
-                        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
-                            <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
-                                <div class="modal-content modal-lg" style="height: 900px" align="center">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
-                                        @{
-                                            var base64 = Convert.ToBase64String(item.FileContent);
-                                            var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
-                                        }
-                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
+                    <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
+                        <div class="modal-content modal-lg" style="height: 900px" align="center">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                @{
+                                    var base64 = Convert.ToBase64String(item.FileContent);
+                                    var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
+                                }
+                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
-                    }
-                    if (item.FileName.Contains(".jpg"))
-                    {
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1" style="font-size: 12px">Shiko</button>
+                    </div>
+                </div>
+            }
+            if (item.FileName.Contains(".jpg"))
+            {
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1" style="font-size: 12px">Shiko</button>
 
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content modal-lg">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
-                                        @{
-                                            var base64 = Convert.ToBase64String(item.FileContent);
-                                            var pdfsrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                        }
-                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content modal-lg">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                @{
+                                    var base64 = Convert.ToBase64String(item.FileContent);
+                                    var pdfsrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                }
+                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                    }
-                    if (item.FileName.Contains(".png"))
-                    {
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
+            }
+            if (item.FileName.Contains(".png"))
+            {
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
 
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document" style="width: 1024px; height: 1024px">
-                                <div class="modal-content modal-lg">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="width: 100%; height: 100%">
-                                        @{
-                                            var base64 = Convert.ToBase64String(item.FileContent);
-                                            var pdfsrc = String.Format("data:image/png;base64,{0}", base64);
-                                        }
-                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document" style="width: 1024px; height: 1024px">
+                        <div class="modal-content modal-lg">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="width: 100%; height: 100%">
+                                @{
+                                    var base64 = Convert.ToBase64String(item.FileContent);
+                                    var pdfsrc = String.Format("data:image/png;base64,{0}", base64);
+                                }
+                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
-                    }
-                }
-                @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
-                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-        </tr>
+                    </div>
+                </div>
+            }
+        }
+        @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
+        @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
+    </td>
+</tr>
     }
 </table>
 

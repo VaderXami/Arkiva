@@ -32,6 +32,15 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Emri Subjektit")]
+        public string EmriSubjektit { get; set; }
+        [Display(Name = "Emri Inspektuesit")]
+        public string EmriInspektuesit { get; set; }
+        [Display(Name = "Nr. Inspektimit")]
+        public int NrInspektuesit { get; set; }
+        [Display(Name = "Lloji Dokumentit")]
+        public string EmriLlojitDokumentit { get; set; }
+
         [Display(Name = "Data e Regjistrimit")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }

@@ -358,6 +358,14 @@
     <Compile Include="Migrations\202107121435036_nrinspektim.Designer.cs">
       <DependentUpon>202107121435036_nrinspektim.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107150828103_emrisubjektitne dokumet.cs" />
+    <Compile Include="Migrations\202107150828103_emrisubjektitne dokumet.Designer.cs">
+      <DependentUpon>202107150828103_emrisubjektitne dokumet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107150923462_new vlues .cs" />
+    <Compile Include="Migrations\202107150923462_new vlues .Designer.cs">
+      <DependentUpon>202107150923462_new vlues .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1297,6 +1305,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107121435036_nrinspektim.resx">
       <DependentUpon>202107121435036_nrinspektim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107150828103_emrisubjektitne dokumet.resx">
+      <DependentUpon>202107150828103_emrisubjektitne dokumet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107150923462_new vlues .resx">
+      <DependentUpon>202107150923462_new vlues .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

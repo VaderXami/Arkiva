@@ -210,12 +210,34 @@ namespace Arkiva.Controllers
          *          InspektimId: Duke mar id e inspektimit e cila perkon me ate te subjektit jemi te gatshem qe te kryejme veprimet si me poshte. Eshte e tipit string pasi e marim nga url Id e sakte.
          * Return: Kthen View e metodes Create nxitur nga ActionResult.
         **/
+
+        public string[] getSubjektName(string LlojiDokumentitId)
+        {
+            var lloj = db.LlojiDokumentit.Find(Convert.ToInt32(LlojiDokumentitId));
+            var inspektim = db.Inspektim.Find(lloj.InspektimId);
+            var subjekt = db.Subjekt.Find(inspektim.SubjektId);
+            string[] emrat = new string[4];
+
+            emrat[0] = subjekt.Emri;
+            emrat[1] = inspektim.Emri;
+            emrat[2] = inspektim.NrInspektimit.ToString();
+            emrat[3] = lloj.Emri;
+
+            return (emrat);
+        }
         public ActionResult Create(string LlojiDokumentitId)
         {
             var llojiList = new List<string>();
             var llojiQy = from d in db.LlojiDokumentit orderby d.Id select d.Id.ToString();
             var dokument = from m in db.Dokument select m;
-            
+
+            string[] emrat = getSubjektName(LlojiDokumentitId);
+
+            ViewBag.EmriSubjektit = emrat[0];
+            ViewBag.EmriInspektuesit = emrat[1];
+            ViewBag.NrInspektuesit = Convert.ToInt32(emrat[2]);
+            ViewBag.EmriLlojitDokumentit = emrat[3];
+
             llojiList.AddRange(llojiQy.Distinct());
             ViewBag.LlojiDokumentitId = new SelectList(llojiList.Where(s => s.Contains(LlojiDokumentitId)));
             return View();
@@ -240,6 +262,11 @@ namespace Arkiva.Controllers
                         dokument.FileName = Files.FileName;
                         dokument.FileContent = FileDet;
                         dokument.Data = DateTime.Now;
+                        string[] emrat = getSubjektName(dokument.LlojiDokumentitId.ToString());
+                        dokument.EmriSubjektit = emrat[0];
+                        dokument.EmriInspektuesit = emrat[1];
+                        dokument.NrInspektuesit = Convert.ToInt32(emrat[2]);
+                        dokument.EmriLlojitDokumentit = emrat[3];
                         db.Dokument.Add(dokument);
                         db.SaveChanges();
                         return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });

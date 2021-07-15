@@ -981,6 +981,8 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations._new.resource
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.test.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.test2.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.nrinspektim.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.emrisubjektitnedokumet.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.newvlues.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CoreCompileInputs.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CopyComplete
