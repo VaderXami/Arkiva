@@ -342,9 +342,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107160654159_Initial.cs" />
-    <Compile Include="Migrations\202107160654159_Initial.Designer.cs">
-      <DependentUpon>202107160654159_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202107161213380_initial.cs" />
+    <Compile Include="Migrations\202107161213380_initial.Designer.cs">
+      <DependentUpon>202107161213380_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
@@ -1274,8 +1274,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107160654159_Initial.resx">
-      <DependentUpon>202107160654159_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107161213380_initial.resx">
+      <DependentUpon>202107161213380_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
