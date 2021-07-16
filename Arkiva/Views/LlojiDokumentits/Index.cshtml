@@ -52,19 +52,40 @@
     {
         <div>
             <p>
-                @Html.Hidden("InspektimId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Lloj Dokumenti", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
-                <input type="submit" value="Kerko" class="btn btn-info" style="font-size: 12px" />
-                <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
-                <div class="text-danger">
-                    @ViewBag.Message
-                </div> <br />
+                <div class="form-inline">
+                    @Html.Hidden("InspektimId")
+                    @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Lloj Dokumenti", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
+                    <div class="form-group form-group-sm">
+                        <div class="col-md-8">
+                            @Html.TextBox("start", null, new { @class = "form-control datepicker", @autocomplete = "off", @id = "dateTime" })
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group-sm">
+                            <div class="col-md-offset-2 col-md-10" style="margin-right: 9px">
+                                <input type="submit" value="Kërko Datën" class="btn btn-info" style="font-size: 12px" /> <span> </span>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('dateTime').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px; margin-left: 3px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div style="margin-top: 20px">
+                    <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
+                    <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
             </p>
         </div>
+        <div class="text-danger">
+            @ViewBag.Message
+        </div> <br />
     }
 </p>
 <table class="table table-secondary">
@@ -102,3 +123,57 @@
 
 </table>
 <h5 class="text-danger">@ViewBag.Total2</h5>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-darkness/jquery-ui.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker($.datepicker.regional['sq'] = {
+                closeText: 'mbylle',
+                prevText: '&#x3c;Mbrapa',
+                nextText: 'Përpara&#x3e;',
+                currentText: 'sot',
+                monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+                    'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'],
+                monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nën', 'Dhj'],
+                dayNames: ['E Diel', 'E Hënë', 'E Martë', 'E Mërkurë', 'E Enjte', 'E Premte', 'E Shtune'],
+                dayNamesShort: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                dayNamesMin: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                weekHeader: 'Ja',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                changeMonth: true,
+                changeYear: true,
+                todayHighlight: true,
+                autoclose: true,
+                dateFormat: 'mm/dd/yy'
+            });
+        });
+
+        $(function () {
+            $.validator.addMethod('date',
+                function (value, element) {
+                    if (this.optional(element)) {
+                        return true;
+                    }
+                    var valid = true;
+                    try {
+                        $.datepicker.parseDate('mm/dd/yy', value);
+                    }
+                    catch (err) {
+                        valid = false;
+                    }
+                    return valid;
+                });
+            $(".datetype").datepicker({ dateFormat: 'mm/dd/yy' });
+        });
+    </script>
+}

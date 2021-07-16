@@ -71,7 +71,7 @@
 
         <h4>@ViewBag.InspektimName</h4>
         <h4>
-            
+
             <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(SubjektName + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(InspektimName1 + " " + nrInspektim2 + "/", "Index", "Inspektims", new { SubjektId = ViewBag.newSubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(item + "/", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, null)
         </h4>
     }
@@ -90,14 +90,35 @@
     {
         <div>
             <p>
-                @Html.Hidden("LlojiDokumentitId")
-                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
-                <input type="submit" value="Kerko" class="btn btn-info" style="font-size: 12px" />
-                <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
+                <div class="form-inline">
+                    @Html.Hidden("LlojiDokumentitId")
+                    @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
+                    <div class="form-group form-group-sm">
+                        <div class="col-md-8">
+                            @Html.TextBox("start", null, new { @class = "form-control datepicker", @autocomplete = "off", @id = "dateTime" })
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group-sm">
+                            <div class="col-md-offset-2 col-md-10" style="margin-right: 9px">
+                                <input type="submit" value="Kërko Datën" class="btn btn-info" style="font-size: 12px" /> <span> </span>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('dateTime').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px; margin-left: 3px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div style="margin-top: 20px">
+                    <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
+                    <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
             </p>
         </div>
     }
@@ -130,135 +151,135 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
-            {
-                <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
-            }
-            else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
-            {
-                <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
-            }
-            else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
-            {
-                <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
-            }
-            else if (item.FileName.Contains(".xlsx"))
-            {
-                <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
-            }
-            else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
-            {
-                <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
-            }
-            else
-            {
-                <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
-            }
-        }
-        @Html.DisplayFor(modelItem => item.FileName)
-    </td>
-    <td align="left">
-        @{ if (item.FileName.Contains(".pdf"))
-            {
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
+        <tr>
+            <td>
+                @{ if (item.FileName.Contains(".pdf") || item.FileName.Contains(".ppt"))
+                    {
+                        <img src="~/Assets/pdfimg.svg.png" style="width: 30px; height: 30px" />
+                    }
+                    else if (item.FileName.Contains(".docx") || item.FileName.Contains(".doc"))
+                    {
+                        <img src="~/Assets/wordimg.svg.png" style="width: 30px; height: 30px" />
+                    }
+                    else if (item.FileName.Contains(".png") || item.FileName.Contains(".jpeg") || item.FileName.Contains(".jpg"))
+                    {
+                        <img src="~/Assets/imageicon.png" style="width: 30px; height: 30px" />
+                    }
+                    else if (item.FileName.Contains(".xlsx"))
+                    {
+                        <img src="~/Assets/excelicon.png" style="width: 30px; height: 30px" />
+                    }
+                    else if (item.FileName.Contains(".zip") || item.FileName.Contains(".rar"))
+                    {
+                        <img src="~/Assets/zipfile1.png" style="width: 30px; height: 30px" />
+                    }
+                    else
+                    {
+                        <img src="~/Assets/file.png" style="width: 30px; height: 30px" />
+                    }
+                }
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td align="left">
+                @{ if (item.FileName.Contains(".pdf"))
+                    {
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
 
-                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
-                    <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
-                        <div class="modal-content modal-lg" style="height: 900px" align="center">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
-                                @{
-                                    var base64 = Convert.ToBase64String(item.FileContent);
-                                    var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
-                                }
-                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
+                            <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
+                                <div class="modal-content modal-lg" style="height: 900px" align="center">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            }
-            if (item.FileName.Contains(".jpg"))
-            {
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1" style="font-size: 12px">Shiko</button>
+                    }
+                    if (item.FileName.Contains(".jpg"))
+                    {
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1" style="font-size: 12px">Shiko</button>
 
-                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content modal-lg">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
-                                @{
-                                    var base64 = Convert.ToBase64String(item.FileContent);
-                                    var pdfsrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                }
-                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content modal-lg">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-            }
-            if (item.FileName.Contains(".png"))
-            {
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
+                    }
+                    if (item.FileName.Contains(".png"))
+                    {
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
 
-                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document" style="width: 1024px; height: 1024px">
-                        <div class="modal-content modal-lg">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="width: 100%; height: 100%">
-                                @{
-                                    var base64 = Convert.ToBase64String(item.FileContent);
-                                    var pdfsrc = String.Format("data:image/png;base64,{0}", base64);
-                                }
-                                <embed src="@pdfsrc" style="width: 100%; height: 100%" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document" style="width: 1024px; height: 1024px">
+                                <div class="modal-content modal-lg">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="width: 100%; height: 100%">
+                                        @{
+                                            var base64 = Convert.ToBase64String(item.FileContent);
+                                            var pdfsrc = String.Format("data:image/png;base64,{0}", base64);
+                                        }
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            }
-        }
-        @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
-        @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Zyra)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NrKutis)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rafti)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Indeksimi)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Data)
-    </td>
-</tr>
+                    }
+                }
+                @Html.ActionLink("Shkarko", "DownLoadFile", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
+                @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zyra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrKutis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rafti)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indeksimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
     }
 </table>
 
@@ -266,3 +287,58 @@
     @ViewBag.Message
 </div>
 <br />
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-darkness/jquery-ui.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker($.datepicker.regional['sq'] = {
+                closeText: 'mbylle',
+                prevText: '&#x3c;Mbrapa',
+                nextText: 'Përpara&#x3e;',
+                currentText: 'sot',
+                monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+                    'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'],
+                monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nën', 'Dhj'],
+                dayNames: ['E Diel', 'E Hënë', 'E Martë', 'E Mërkurë', 'E Enjte', 'E Premte', 'E Shtune'],
+                dayNamesShort: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                dayNamesMin: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
+                weekHeader: 'Ja',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                changeMonth: true,
+                changeYear: true,
+                todayHighlight: true,
+                autoclose: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+        $(function () {
+            $.validator.addMethod('date',
+                function (value, element) {
+                    if (this.optional(element)) {
+                        return true;
+                    }
+                    var valid = true;
+                    try {
+                        $.datepicker.parseDate('dd/mm/yy', value);
+                    }
+                    catch (err) {
+                        valid = false;
+                    }
+                    return valid;
+                });
+            $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+    </script>
+}

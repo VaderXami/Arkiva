@@ -68,7 +68,7 @@ namespace Arkiva.Controllers
          * Return: Kthen nje View e cila brenda ka listen e dokumentave te caktuara sipas kushteve te percaktuara me poshte.
         **/
 
-        public ActionResult Index(int LlojiDokumentitID, string search)
+        public ActionResult Index(DateTime? start, int LlojiDokumentitID, string search)
         {
             var llojiList = new List<string>();
             var llojiQy = from d in db.LlojiDokumentit orderby d.Id select d.Id.ToString();
@@ -81,7 +81,13 @@ namespace Arkiva.Controllers
             {
                 dokument = dokument.Where(s => s.LlojiDokumentitId == LlojiDokumentitID);
             }
-            if (!String.IsNullOrWhiteSpace(search))
+            if (!String.IsNullOrWhiteSpace(start.ToString()) && String.IsNullOrWhiteSpace(search))
+            {
+                var dokumente2 = db.Dokument.Where(d => d.LlojiDokumentitId == LlojiDokumentitID);
+                var list = dokumente2.Where(x => x.Data == start);
+                return View(list);
+            }
+            else if (!String.IsNullOrWhiteSpace(search))
             {
                 if (search.All(char.IsDigit))
                 {

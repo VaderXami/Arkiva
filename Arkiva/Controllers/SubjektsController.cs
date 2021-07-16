@@ -62,9 +62,14 @@ namespace Arkiva.Controllers
          *          search: Nje variabel e tipit string e cila na sherben per te kryer nje kerkim te subjekteve ne raste se kemi je list te gjat te tyre.
          * Return: Listen e Subjekteve ne View.
         **/
-        public ActionResult Index(string search)
+        public ActionResult Index(DateTime? start, string search)
         {
-            if (!String.IsNullOrWhiteSpace(search))
+            if (!String.IsNullOrWhiteSpace(start.ToString()) && String.IsNullOrWhiteSpace(search))
+            {
+                var subjekt = db.Subjekt.Where(d => d.Data == start);
+                return View(subjekt);
+            }
+            else if (!String.IsNullOrWhiteSpace(search))
             {
                 var subjekt = db.Subjekt.Where(s => s.Emri.Contains(search));
                 if (search.Trim().Contains(";"))

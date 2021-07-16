@@ -67,7 +67,7 @@ namespace Arkiva.Controllers
          *          search: Sherben si fjale kyce per gjetjen e dokumentit sipas emrit perkates te specifikuar ne kete string.
          * Return: Kthen nje View e cila brenda ka listen e inspektimeve te caktuara sipas kushteve te percaktuara me poshte.
         **/
-        public ActionResult Index(int SubjektId, string search)
+        public ActionResult Index(DateTime? start, int SubjektId, string search)
         {
             var subjektList = new List<string>();
             var subjektQy = from d in db.Subjekt orderby d.Id select d.Id.ToString();
@@ -75,12 +75,18 @@ namespace Arkiva.Controllers
 
             subjektList.AddRange(subjektQy.Distinct());
             ViewBag.SubjektId = new SelectList(subjektList.Where(s => s.Contains(SubjektId.ToString())));
-
+            
             if (!String.IsNullOrEmpty(SubjektId.ToString()))
             {
                 inspektim = inspektim.Where(s => s.SubjektId == SubjektId);
             }
-            if (!String.IsNullOrWhiteSpace(search))
+            if (!String.IsNullOrWhiteSpace(start.ToString()) && String.IsNullOrWhiteSpace(search))
+            {
+                var inspektim2 = db.Inspektim.Where(i => i.SubjektId == SubjektId);
+                var list = inspektim2.Where(e => e.Data == start);
+                return View(list);
+            }
+            else if (!String.IsNullOrWhiteSpace(search))
             {
                 if (search.All(char.IsDigit))
                 {

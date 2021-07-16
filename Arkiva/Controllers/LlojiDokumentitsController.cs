@@ -17,7 +17,7 @@ namespace Arkiva.Controllers
         private ArkivaDBContext db = new ArkivaDBContext();
 
         // GET: LlojiDokumentits
-        public ActionResult Index(int InspektimId, string search)
+        public ActionResult Index(DateTime? start, int InspektimId, string search)
         {
             var inspektimList = new List<string>();
             var inspektimQy = from d in db.Inspektim orderby d.Id select d.Id.ToString();
@@ -30,7 +30,13 @@ namespace Arkiva.Controllers
             {
                 lloji = lloji.Where(s => s.InspektimId == InspektimId);
             }
-            if (!String.IsNullOrWhiteSpace(search))
+            if (!String.IsNullOrWhiteSpace(start.ToString()) && String.IsNullOrWhiteSpace(search))
+            {
+                var lloj2 = db.LlojiDokumentit.Where(i => i.InspektimId == InspektimId);
+                var list = lloj2.Where(e => e.Data == start);
+                return View(list);
+            }
+            else if (!String.IsNullOrWhiteSpace(search))
             {
                 lloji = lloji.Where(x => x.Emri.Contains(search));
                 if (search.Trim().Contains(";"))
@@ -115,27 +121,26 @@ namespace Arkiva.Controllers
             string newFileName = name + "_" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ext;
             return newFileName;
         }
-        /*public ActionResult DownloadZipFile(int id)
+        public ActionResult DownloadZipFile(int id)
         {
-            var dokument = db.Dokument.Where(i => i.LlojiDokumentitId == id).ToList();
-
             using (var memoryStream = new MemoryStream())
             {
                 using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
                 {
-                    foreach (var doc in dokument)
+                    var dokumente = db.LlojiDokumentit.Find(id).Dokumente;
+                    foreach (var dokument in dokumente)
                     {
-                        var file = archive.CreateEntry(doc.LlojiDokumentit.Inspektim.Emri + "/" + doc.LlojiDokumentit.Emri + "/" + GetNewName(doc.FileName.ToString()));
+                        var file = archive.CreateEntry(dokument.EmriLlojitDokumentit + "/" + GetNewName(dokument.FileName.ToString()));
                         using (var stream = file.Open())
                         {
-                            stream.Write(doc.FileContent, 0, doc.FileContent.Length);
+                            stream.Write(dokument.FileContent, 0, dokument.FileContent.Length);
                         }
                     }
                 }
-                var inspektim = db.Inspektim.Find(id);
-                return File(memoryStream.ToArray(), "application/zip", inspektim.Emri + ".zip");
+                var lloj = db.LlojiDokumentit.Find(id);
+                return File(memoryStream.ToArray(), "application/zip", lloj.Emri + ".zip");
             }
-        }*/
+        }
 
         // GET: LlojiDokumentits/Edit/5
         public ActionResult Edit(int? id)
