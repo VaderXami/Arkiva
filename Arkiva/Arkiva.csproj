@@ -346,6 +346,14 @@
     <Compile Include="Migrations\202107161213380_initial.Designer.cs">
       <DependentUpon>202107161213380_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107190951562_listselected.cs" />
+    <Compile Include="Migrations\202107190951562_listselected.Designer.cs">
+      <DependentUpon>202107190951562_listselected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107191001064_removedselection.cs" />
+    <Compile Include="Migrations\202107191001064_removedselection.Designer.cs">
+      <DependentUpon>202107191001064_removedselection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1276,6 +1284,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107161213380_initial.resx">
       <DependentUpon>202107161213380_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107190951562_listselected.resx">
+      <DependentUpon>202107190951562_listselected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107191001064_removedselection.resx">
+      <DependentUpon>202107191001064_removedselection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

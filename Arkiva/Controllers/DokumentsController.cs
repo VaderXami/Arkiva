@@ -85,6 +85,10 @@ namespace Arkiva.Controllers
             {
                 var dokumente2 = db.Dokument.Where(d => d.LlojiDokumentitId == LlojiDokumentitID);
                 var list = dokumente2.Where(x => x.Data == start);
+                if (!list.Any())
+                {
+                    ViewBag.Message = "Dokumenti nuk u gjend!";
+                }
                 return View(list);
             }
             else if (!String.IsNullOrWhiteSpace(search))
@@ -129,7 +133,7 @@ namespace Arkiva.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Dokumenti nuk u gjend";
+                        ViewBag.Message = "Dokumenti nuk u gjend!";
                         return View(listDokumente);
                     }
                 }

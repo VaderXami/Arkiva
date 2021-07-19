@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Arkiva.Models.Dokument>
 @{
-
     var url = Context.Request.Url.ToString();
     string[] tmp = url.Split('=');
 
@@ -92,32 +91,24 @@
             <p>
                 <div class="form-inline">
                     @Html.Hidden("LlojiDokumentitId")
-                    @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kerko Dokumentin", maxlength = "35", @id = "myInput", autocomplete = "off" }) <br />
-                    <div class="form-group form-group-sm">
-                        <div class="col-md-8">
-                            @Html.TextBox("start", null, new { @class = "form-control datepicker", @autocomplete = "off", @id = "dateTime" })
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="form-group-sm">
-                            <div class="col-md-offset-2 col-md-10" style="margin-right: 9px">
-                                <input type="submit" value="Kërko Datën" class="btn btn-info" style="font-size: 12px" /> <span> </span>
+                    <div>
+                        <div class="form-inline">
+                            @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Kërko Dokument", @id = "myInput", autocomplete = "off", maxlength = "35" }) <br />
+                            <div class="form-group form-group-sm">
+                                <div class="col-md-8">
+                                    @Html.TextBox("start", null, new { @class = "form-control datepicker", @autocomplete = "off", @id = "dateTime" })
+                                </div>
                             </div>
                         </div>
-                        <button onclick="document.getElementById('dateTime').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px; margin-left: 3px">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                            </svg>
-                        </button>
+                        <div style="margin-top: 20px">
+                            <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
+                            <button onclick="submitForms()" class="btn btn-secondary" style="width: 45px; height: 30px" data-toggle="tooltip" data-placement="top" title="Pastro fushat.">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div style="margin-top: 20px">
-                    <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
-                    <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                        </svg>
-                    </button>
                 </div>
             </p>
         </div>
@@ -198,7 +189,7 @@
                                             var base64 = Convert.ToBase64String(item.FileContent);
                                             var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
                                         }
-                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" type="application/pdf"/>
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" type="application/pdf" />
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -280,7 +271,7 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
         </tr>
-    }
+      }
 </table>
 
 <div class="text-danger">
@@ -319,7 +310,7 @@
                 changeYear: true,
                 todayHighlight: true,
                 autoclose: true,
-                dateFormat: 'dd/mm/yy'
+                dateFormat: 'mm/dd/yy'
             });
         });
 
@@ -331,14 +322,20 @@
                     }
                     var valid = true;
                     try {
-                        $.datepicker.parseDate('dd/mm/yy', value);
+                        $.datepicker.parseDate('mm/dd/yy', value);
                     }
                     catch (err) {
                         valid = false;
                     }
                     return valid;
                 });
-            $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
+            $(".datetype").datepicker({ dateFormat: 'mm/dd/yy' });
         });
+
+        submitForms = function ()
+        {
+            document.getElementById('myInput').value = '';
+            document.getElementById('dateTime').value = '';
+        }
     </script>
 }

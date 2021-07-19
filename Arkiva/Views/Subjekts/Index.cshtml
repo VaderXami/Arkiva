@@ -30,22 +30,10 @@
                         @Html.TextBox("start", null, new { @class = "form-control datepicker", @autocomplete = "off", @id = "dateTime" })
                     </div>
                 </div>
-                <div class="form-inline">
-                    <div class="form-group-sm">
-                        <div class="col-md-offset-2 col-md-10" style="margin-right: 9px">
-                            <input type="submit" value="Kërko Datën" class="btn btn-info" style="font-size: 12px" /> <span> </span>
-                        </div>
-                    </div>
-                    <button onclick="document.getElementById('dateTime').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px; margin-left: 3px">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                        </svg>
-                    </button>
-                </div>
             </div>
             <div style="margin-top: 20px">
                 <input type="submit" value="Kërko" class="btn btn-info" style="font-size: 12px" />
-                <button onclick="document.getElementById('myInput').value = ''" class="btn btn-secondary" style="width: 45px; height: 30px">
+                <button onclick="submitForms()" class="btn btn-secondary" style="width: 45px; height: 30px"  data-toggle="tooltip" data-placement="top" title="Pastro fushat.">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
                         <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
                     </svg>
@@ -145,5 +133,11 @@
                     });
                 $(".datetype").datepicker({ dateFormat: 'mm/dd/yy' });
             });
+
+            submitForms = function ()
+            {
+                document.getElementById("dateTime").value = '';
+                document.getElementById("myInput").value = '';
+            }
         </script>
     }
