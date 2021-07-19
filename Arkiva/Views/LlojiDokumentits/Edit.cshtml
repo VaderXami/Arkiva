@@ -92,14 +92,14 @@
                     }
                     var valid = true;
                     try {
-                        $.datepicker.parseDate('dd/mm/yy', value);
+                        $.datepicker.parseDate('dd-mm-yy', value);
                     }
                     catch (err) {
                         valid = false;
                     }
                     return valid;
                 });
-            $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
+            $(".datetype").datepicker({ dateFormat: 'dd-mm-yy' });
         });
 
     </script>

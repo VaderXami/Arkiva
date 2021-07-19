@@ -42,7 +42,7 @@ namespace Arkiva.Models
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Kontrollit!")]
         [Display(Name = "Data e Kontrollit")] 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data{ get; set; }
         public int SubjektId { get; set; }
         public virtual Subjekt Subjekt { get; set; }

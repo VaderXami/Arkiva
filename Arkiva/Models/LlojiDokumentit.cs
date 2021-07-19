@@ -15,7 +15,7 @@ namespace Arkiva.Models
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         public int InspektimId { get; set; }
         public virtual Inspektim Inspektim { get; set; }

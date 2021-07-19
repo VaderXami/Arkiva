@@ -198,7 +198,7 @@
                                             var base64 = Convert.ToBase64String(item.FileContent);
                                             var pdfsrc = String.Format("data:application/pdf;base64,{0}", base64);
                                         }
-                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" />
+                                        <embed src="@pdfsrc" style="width: 100%; height: 100%" type="application/pdf"/>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

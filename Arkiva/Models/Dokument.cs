@@ -42,7 +42,7 @@ namespace Arkiva.Models
         public string EmriLlojitDokumentit { get; set; }
 
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         [Display(Name = "Emri Dokumentit")]
 
