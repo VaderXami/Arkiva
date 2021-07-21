@@ -63,17 +63,17 @@ namespace Arkiva.Models
         public string Zyra { get; set; }
 
         [Display(Name = "Nr. Kutisë")]
-        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
+        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë!")]
         public int NrKutis { get; set; }
 
         [Display(Name = "Rafti Përkatës")]
-        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
+        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës!")]
         public int Rafti { get; set; }
 
         [Display(Name = "Fusha e Indeksimit")]
-        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
+        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën e Indeksimit!")]
         public int Indeksimi { get; set; }
         public int LlojiDokumentitId { get; set; }

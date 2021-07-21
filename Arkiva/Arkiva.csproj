@@ -463,6 +463,10 @@
     <Compile Include="Migrations\202107211346383_addedAttributesForDokument109.Designer.cs">
       <DependentUpon>202107211346383_addedAttributesForDokument109.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107211702197_rangenumbers.cs" />
+    <Compile Include="Migrations\202107211702197_rangenumbers.Designer.cs">
+      <DependentUpon>202107211702197_rangenumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1477,6 +1481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107211346383_addedAttributesForDokument109.resx">
       <DependentUpon>202107211346383_addedAttributesForDokument109.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107211702197_rangenumbers.resx">
+      <DependentUpon>202107211702197_rangenumbers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

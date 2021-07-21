@@ -5,18 +5,21 @@
 
     var url = Context.Request.Url;
     string[] lloji = url.ToString().Split('=');
+
 }
 
 <h4>@ViewBag.Title</h4>
-<div class="alert alert-success fade in hide" role="alert" id="alertId">
-    Dokumenti u ngarkua me sukses!
+<div class="alert alert-success alert-dismissible fade in hide" role="alert" id="successId">
+    <strong>Dokumenti u ngarkua me sukses!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
-
 <div align="right">
     @Html.ActionLink("Anulo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
-@using (Html.BeginForm("Create", "Dokuments", FormMethod.Post, new { @id = "registerFormId" ,enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Dokuments", FormMethod.Post, new { @id = "registerFormId", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 <div class="form-horizontal">
@@ -82,7 +85,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Rafti, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off"} })
+            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
             @Html.ValidationMessageFor(model => model.Rafti, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -97,47 +100,61 @@
 
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <style>
-                .label1 {
-                    background-color: black;
-                    color: white;
-                    padding: 0.5rem;
-                    font-family: sans-serif;
-                    border-radius: 0.3rem;
-                    cursor: pointer;
+    <div class="col-md-10">
+        <style>
+            .label1 {
+                background-color: black;
+                color: white;
+                padding: 0.5rem;
+                font-family: sans-serif;
+                border-radius: 0.3rem;
+                cursor: pointer;
+            }
+
+            .inputfile {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+            }
+
+                .inputfile:focus + label {
+                    outline: 1px dotted #000;
+                    outline: -webkit-focus-ring-color auto 5px;
                 }
 
-                .inputfile {
-                    width: 0.1px;
-                    height: 0.1px;
-                    opacity: 0;
-                    overflow: hidden;
-                    position: absolute;
-                    z-index: -1;
+                .inputfile + label * {
+                    pointer-events: none;
                 }
-
-                    .inputfile:focus + label {
-                        outline: 1px dotted #000;
-                        outline: -webkit-focus-ring-color auto 5px;
-                    }
-
-                    .inputfile + label * {
-                        pointer-events: none;
-                    }
-            </style>
+        </style>
+        <div class="form-inline">
             <input type='file' id="getFile" name="Files" class="inputfile" required title="Ju lutem, ngarkoni dokumentin!">
             <label for="getFile" class="label1">Ngarko Dokument</label>
-            <script>
-                function getInputValue() {
-                    var inputVal = document.getElementById("getFile").value;
-                    if (inputVal.length != 0) {
-                        document.getElementById('alertId').classList.remove('hide')
+            <div class="alert alert-success fade in hide" role="alert" id="alertId" style="width: 200px; margin-left: 20px"></div>
+        </div>
+        <script>
+            document.getElementById('getFile').onchange = function () {
+                var inputVal = document.getElementById("getFile").value;
+                if (inputVal.length != 0) {
+                    document.getElementById('alertId').classList.remove('hide');
+                    document.getElementById('successId').classList.remove('hide');
+                    var node = document.createElement("h5");
+                    var textnode = document.createTextNode("Dokumenti: " + document.getElementById("getFile").files[0].name);
+                    node.appendChild(textnode);
+                    document.getElementById('alertId').appendChild(node);
+
+                    var c = document.getElementById("alertId").childElementCount;
+                    if (c > 1)
+                    {
+                        document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
                     }
                 }
-            </script>
-            @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
-        </div>
+            };
+        </script>
+        @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+    </div>
         @ViewBag.FileStatus
     </div>
 
@@ -149,10 +166,9 @@
         </div>
     </div>
 
-    <div class="form-group" style="padding-top: 30px">
+    <div class="form-group" style="margin-bottom: 200px">
         <div class="col-md-offset-2 col-md-10">
-
-            <input type="submit" onclick="getInputValue()" value="Shto" class="btn btn-success" , style="font-size: 12px" />
+            <input type="submit" value="Shto" class="btn btn-success" , style="font-size: 12px" />
         </div>
     </div>
 </div>

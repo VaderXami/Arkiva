@@ -39,7 +39,7 @@ namespace Arkiva.Models
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Inspektimit!")]
         [Display(Name = "Nr. Inspektimit")]
-        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
+        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         public int NrInspektimit { get; set; }
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Kontrollit!")]
