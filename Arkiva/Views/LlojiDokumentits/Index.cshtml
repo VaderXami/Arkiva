@@ -24,7 +24,7 @@
         var list = db.Inspektim.Find(tmpp);
         ViewBag.Id = list.SubjektId;
         <h4> Inspektim nga @list.Emri për Subjektin @list.Subjekt.Emri</h4>
-        <h4> <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Subjekt.Emri + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Emri + " " + list.NrInspektimit + "/", "Index", "Inspektims", new { SubjektId = ViewBag.Id }, null)</h4>
+        <h4> <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Subjekt.Emri + "/", "Index", "Inspektims", new { SubjektId = list.SubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(list.Emri + " " + list.NrInspektimit + "/", "Index", "LlojiDokumentits", new { InspektimId = list.Id }, null)</h4>
 
 
     }
@@ -103,7 +103,7 @@
             </td>
             <td style="padding-top: 12px">
                 @Html.ActionLink("Modifiko", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", @style = "font-size: 12px" })
-                @Html.ActionLink("Permbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
+                @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
                 @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
             </td>
             <td></td>
@@ -168,10 +168,15 @@
             $(".datetype").datepicker({ dateFormat: 'mm/dd/yy' });
         });
 
-        submitForms = function ()
-        {
+        submitForms = function () {
             document.getElementById("myInput").value = '';
             document.getElementById("dateTime").value = '';
         }
     </script>
+    <style>
+        .ui-datepicker .ui-datepicker-title select {
+            color: #000;
+        }
+    </style>
+
 }

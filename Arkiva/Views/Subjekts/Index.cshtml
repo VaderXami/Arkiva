@@ -5,7 +5,8 @@
 }
 
 
-<h4 style="margin-bottom: 30px">@ViewBag.Title @ViewBag.Date</h4>
+<h4>@ViewBag.Title</h4>
+<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null)</h4>
 <p>
     <div align="right">
         @if (Model.Count() == 0)
@@ -140,4 +141,10 @@
                 document.getElementById("myInput").value = '';
             }
         </script>
+
+        <style>
+            .ui-datepicker .ui-datepicker-title select {
+                color: #000;
+            }
+        </style>
     }

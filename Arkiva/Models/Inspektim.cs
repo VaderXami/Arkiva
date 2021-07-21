@@ -30,8 +30,8 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Emri Institucionit Shtetërorë!")]
-        [Display(Name = "Emri Institucionit Shtetërorë")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Emri Institucionit Shtetëror!")]
+        [Display(Name = "Emri Institucionit Shtetëror")]
         [MaxLength(35, ErrorMessage = "Emri Inspektimit duhet të jetë deri në 35 karaktere.")]
         public string Emri { get; set; }
 

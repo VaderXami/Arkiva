@@ -1,11 +1,11 @@
 ﻿@model Arkiva.Models.Inspektim
 
 @{
-    ViewBag.Title = "Fshi inspektimin e kryer nga " + Model.Emri + ". Nuk ka asnje dokument te ngarkuar.";
+    ViewBag.Title = "Fshi Inspektimin!";
 }
 
 <h2>@ViewBag.Title</h2>
-<h2>@Model.Subjekt.Emri/@Model.Emri</h2>
+<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/", "Index", "Inspektims", new { SubjektId = Model.SubjektId }, null) <img src="~/Assets/delete.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
 
 @if (Model.LlojiDokumentit.Any() == true)
 {
@@ -13,11 +13,11 @@
 
     if (ViewBag.Numri > 1)
     {
-        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokumente. Deshironi te procedoni me zgjedhjen?";
+        ViewBag.Message = "Kujdes! Inspektimi përkatës i përket Subjektit " + Model.Subjekt.Emri + " dhe përmban " + ViewBag.Numri + " Dokumente. Dëshironi të procedoni me zgjedhjen?";
     }
     else
     {
-        ViewBag.Message = "Kujdes! Inspektimi perkates i perket Subjektit " + Model.Subjekt.Emri + " dhe permban " + ViewBag.Numri + " Dokument. Deshironi te procedoni me zgjedhjen?";
+        ViewBag.Message = "Kujdes! Inspektimi përkatës i përket Subjektit " + Model.Subjekt.Emri + " dhe përmban " + ViewBag.Numri + " Dokument. Dëshironi të procedoni me zgjedhjen?";
     }
 
 }
@@ -29,6 +29,6 @@
 
     <div class="form-actions no-color" align="right">
         <input type="submit" value="Fshi" class="btn btn-danger" style="font-size: 12px" />
-        @Html.ActionLink("Anullo", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+        @Html.ActionLink("Anulo", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
     </div>
 }

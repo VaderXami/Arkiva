@@ -6,7 +6,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Arkiva.Models;
 
@@ -57,13 +56,8 @@ namespace Arkiva.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Lloji dokumentit nuk u gjend!";
                         return View(listLloji);
                     }
-                }
-                if (!lloji.Any())
-                {
-                    ViewBag.Message = "Nuk u gjend asnje Lloj Dokumenti!";
                 }
             }
             return View(lloji.ToList());

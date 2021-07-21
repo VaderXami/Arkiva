@@ -354,6 +354,26 @@
     <Compile Include="Migrations\202107191001064_removedselection.Designer.cs">
       <DependentUpon>202107191001064_removedselection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107191229421_whitespace.cs" />
+    <Compile Include="Migrations\202107191229421_whitespace.Designer.cs">
+      <DependentUpon>202107191229421_whitespace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107191233121_whitespacea.cs" />
+    <Compile Include="Migrations\202107191233121_whitespacea.Designer.cs">
+      <DependentUpon>202107191233121_whitespacea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107191330089_whitespacea1.cs" />
+    <Compile Include="Migrations\202107191330089_whitespacea1.Designer.cs">
+      <DependentUpon>202107191330089_whitespacea1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107191334163_whitespacea11.cs" />
+    <Compile Include="Migrations\202107191334163_whitespacea11.Designer.cs">
+      <DependentUpon>202107191334163_whitespacea11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107210920362_gramatical.cs" />
+    <Compile Include="Migrations\202107210920362_gramatical.Designer.cs">
+      <DependentUpon>202107210920362_gramatical.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -367,11 +387,14 @@
     <Content Include="App_Data\Arkiva_log.ldf">
       <DependentUpon>Arkiva.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\content.png" />
+    <Content Include="Assets\delete.png" />
     <Content Include="Assets\excelicon.png" />
     <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
     <Content Include="Assets\imageicon.png" />
     <Content Include="Assets\pdfimg.svg.png" />
+    <Content Include="Assets\settings.png" />
     <Content Include="Assets\wordimg.svg.png" />
     <Content Include="Assets\zipfile1.png" />
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -1290,6 +1313,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107191001064_removedselection.resx">
       <DependentUpon>202107191001064_removedselection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107191229421_whitespace.resx">
+      <DependentUpon>202107191229421_whitespace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107191233121_whitespacea.resx">
+      <DependentUpon>202107191233121_whitespacea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107191330089_whitespacea1.resx">
+      <DependentUpon>202107191330089_whitespacea1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107191334163_whitespacea11.resx">
+      <DependentUpon>202107191334163_whitespacea11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107210920362_gramatical.resx">
+      <DependentUpon>202107210920362_gramatical.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

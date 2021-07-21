@@ -22,7 +22,7 @@
     {
         var list = db.Subjekt.Find(tmpp);
         <h4>Subjekti @list.Emri</h4>
-        <h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(@list.Emri + "/", "Index", "Subjekts", null, null)</h4>
+        <h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(@list.Emri + "/", "Index", "Inspektims", new { SubjektId = list.Id }, null)</h4>
     }
     else if (!db.Subjekt.Any(id => id.Id == tmpp))
     {
@@ -176,4 +176,10 @@
             document.getElementById("myInput").value = '';
         }
     </script>
+    <style>
+        .ui-datepicker .ui-datepicker-title select {
+            color: #000;
+        }
+    </style>
+
 }

@@ -980,6 +980,11 @@ C:\Users\ss\source\repos\Arkiva\Arkiva\bin\zh-Hant\Microsoft.VisualStudio.Servic
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.initial.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.listselected.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.removedselection.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.whitespace.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.whitespacea.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.whitespacea1.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.whitespacea11.resources
+C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.Migrations.gramatical.resources
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.GenerateResource.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CoreCompileInputs.cache
 C:\Users\ss\source\repos\Arkiva\Arkiva\obj\Debug\Arkiva.csproj.CopyComplete

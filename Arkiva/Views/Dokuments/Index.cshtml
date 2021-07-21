@@ -70,8 +70,7 @@
 
         <h4>@ViewBag.InspektimName</h4>
         <h4>
-
-            <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(SubjektName + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(InspektimName1 + " " + nrInspektim2 + "/", "Index", "Inspektims", new { SubjektId = ViewBag.newSubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(item + "/", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, null)
+            <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(SubjektName + "/", "Index", "Inspektims", new { SubjektId = ViewBag.newSubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(InspektimName1 + " " + nrInspektim2 + "/", "Index", "LlojiDokumentits", new { InspektimId = ViewBag.Id }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(item + "/", "Index", "Dokuments", new { LlojiDokumentitId = tmpp }, null)
         </h4>
     }
 
@@ -192,7 +191,7 @@
                                         <embed src="@pdfsrc" style="width: 100%; height: 100%" type="application/pdf" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Mbyll</button>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +217,7 @@
                                         <embed src="@pdfsrc" style="width: 100%; height: 100%" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Mbyll</button>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +244,7 @@
                                         <embed src="@pdfsrc" style="width: 100%; height: 100%" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Mbyll</button>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +270,7 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
         </tr>
-      }
+    }
 </table>
 
 <div class="text-danger">
@@ -332,10 +331,15 @@
             $(".datetype").datepicker({ dateFormat: 'mm/dd/yy' });
         });
 
-        submitForms = function ()
-        {
+        submitForms = function () {
             document.getElementById('myInput').value = '';
             document.getElementById('dateTime').value = '';
         }
     </script>
+
+    <style>
+        .ui-datepicker .ui-datepicker-title select {
+            color: #000;
+        }
+    </style>
 }

@@ -113,13 +113,8 @@ namespace Arkiva.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Inspektimi nuk u gjend!";
                         return View(listInspektime);
                     }
-                }
-                if (!inspektim.Any())
-                {
-                    ViewBag.Message = "Nuk u gjend asnje Inspektim!";
                 }
             }
             return View(inspektim.ToList());

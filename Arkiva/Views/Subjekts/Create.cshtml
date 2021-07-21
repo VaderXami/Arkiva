@@ -6,7 +6,7 @@
 
 <h4>@ViewBag.Title</h4>
 <div align="right">
-    @Html.ActionLink("Anullo", "Index", null, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+    @Html.ActionLink("Anulo", "Index", null, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm())
@@ -92,4 +92,9 @@
             $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
         });
     </script>
+    <style>
+        .ui-datepicker .ui-datepicker-title select {
+            color: #000;
+        }
+    </style>
 }

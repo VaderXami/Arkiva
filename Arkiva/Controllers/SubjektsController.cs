@@ -89,7 +89,6 @@ namespace Arkiva.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Subjekti nuk u gjend!";
                         return View(listSubjekte);
                     }
                 }
@@ -100,7 +99,6 @@ namespace Arkiva.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Subjekti nuk u gjend!";
                     return View(subjekt);
                 }
             }
