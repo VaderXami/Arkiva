@@ -28,9 +28,10 @@ namespace Arkiva.Models
     public class Subjekt
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Emri Subjektit Përkatës!")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Emri Subjektit Përkatës!", AllowEmptyStrings = false)]
         [Display(Name = "Emri Subjektit Përkatës")]
         [MaxLength(35, ErrorMessage = "Emri Subjektit duhet të jetë deri në 35 karaktere.")]
+        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni Emri Subjektit Përkatës!")]
         public string Emri { get; set; }
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]

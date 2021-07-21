@@ -12,6 +12,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 using System.Web.Mvc;
+using Xunit;
+using Xunit.Sdk;
 
 namespace Arkiva.Models
 {
@@ -55,17 +57,23 @@ namespace Arkiva.Models
         public HttpPostedFileBase[] Files { get; set; }
 
         [Display(Name = "Zyra e Dokumentit")]
-        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit!")]
+        [MaxLength(35, ErrorMessage = "Emri Zyrës duhet të jetë deri në 35 karaktere.")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit!", AllowEmptyStrings = false)]
+        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit")]
         public string Zyra { get; set; }
 
         [Display(Name = "Nr. Kutisë")]
+        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë!")]
         public int NrKutis { get; set; }
 
         [Display(Name = "Rafti Përkatës")]
+        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës!")]
         public int Rafti { get; set; }
+
         [Display(Name = "Fusha e Indeksimit")]
+        [Range(0, int.MaxValue, ErrorMessage = "Ju lutem, vendosni një numër të saktë!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën e Indeksimit!")]
         public int Indeksimi { get; set; }
         public int LlojiDokumentitId { get; set; }

@@ -225,9 +225,17 @@ namespace Arkiva.Controllers
         // GET: Inspektims/Create
         public ActionResult Create(int SubjektId)
         {
-            ViewBag.SId = SubjektId;
-            ViewBag.SubjektId = new SelectList(db.Subjekt, "Id", "Emri");
+            var subjektList = new List<string>();
+            var subjektQy = from d in db.Subjekt orderby d.Id select d.Id.ToString();
+            var inspektim = from m in db.Inspektim select m;
+
+            subjektList.AddRange(subjektQy.Distinct());
+            ViewBag.SubjektId = new SelectList(subjektList.Where(s => s.Contains(SubjektId.ToString())));
             return View();
+
+           /* ViewBag.SId = SubjektId;
+            ViewBag.SubjektId = new SelectList(db.Subjekt, "Id", "Emri");*/
+            //return View();
         }
 
         // POST: Inspektims/Create

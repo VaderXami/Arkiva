@@ -8,9 +8,10 @@ namespace Arkiva.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!")]
+        [Required(ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!", AllowEmptyStrings = false)]
         [Display(Name = "Lloji i Dokumentit")]
         [MaxLength(35, ErrorMessage = "Emri i Llojit te Dokumentit duhet të jetë deri në 35 karaktere.")]
+        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!")]
         public string Emri { get; set; }
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]

@@ -2,13 +2,15 @@
 
 @{
     ViewBag.Title = "Krijo Inspektim";
+    var url = Context.Request.Url;
+    string[] sub = url.ToString().Split('=');
 }
 
 <h4>@ViewBag.Title</h4>
 
 
 <div align="right">
-    @Html.ActionLink("Anulo Shtim", "Index", new { SubjektId = ViewBag.SId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+    @Html.ActionLink("Anulo Shtim", "Index", new { SubjektId = sub[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 @using (Html.BeginForm("Create", "Inspektims", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -20,7 +22,7 @@
         <div class="form-group">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px ", })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control", @placeholder = "AKU" } })
+                @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "AKU", @autocomplete = "off"} })
                 @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +30,7 @@
         <div class="form-group">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrInspektimit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NrInspektimit, new { htmlAttributes = new { @class = "form-control", @placeholder = "000000000" } })
+                @Html.EditorFor(model => model.NrInspektimit, new { htmlAttributes = new { @class = "form-control", @placeholder = "000000000", required = "required" } })
                 @Html.ValidationMessageFor(model => model.NrInspektimit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +38,7 @@
         <div class="form-group" style="padding-top: 10px">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @placeholder = "dd/mm/yyyy" } })
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @placeholder = "dd/mm/yyyy", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
