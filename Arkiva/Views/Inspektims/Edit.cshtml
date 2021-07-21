@@ -5,7 +5,7 @@
 }
 
 <h4>@ViewBag.Title</h4>
-<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/ ", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/ ", "Index", "Inspektims", new { SubjektId = Model.SubjektId }, null) <img src="~/Assets/settings.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
+<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/ ", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/", "Edit", "Subjekts", new { id = Model.Subjekt.Id }, null) <img src="~/Assets/settings.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
 
 <div align="right">
     @Html.ActionLink("Anulo Modifikim", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })

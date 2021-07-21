@@ -10,7 +10,7 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Inspektim.Subjekt.Emri + "/", "Index", "Inspektims", new { SubjektId = Model.Inspektim.SubjektId }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Inspektim.Emri + " "  + Model.Inspektim.NrInspektimit + "/", "Index", "LlojiDokumentits", new { InspektimId = Model.InspektimId }, null) <img src="~/Assets/delete.png" style="width: 30px; height: 30px" /> @Model.Emri/</h4>
+<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Inspektim.Subjekt.Emri + "/", "Delete", "Subjekts", new { id = Model.Inspektim.Subjekt.Id }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Inspektim.Emri + " "  + Model.Inspektim.NrInspektimit + "/", "Delete", "Inspektims", new { id = Model.Inspektim.Id }, null) <img src="~/Assets/delete.png" style="width: 30px; height: 30px" /> @Model.Emri/</h4>
 
 @if (Model.Dokumente.Any() == true)
 {

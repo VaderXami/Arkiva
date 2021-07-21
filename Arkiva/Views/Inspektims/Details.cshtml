@@ -5,7 +5,7 @@
 }
 
 <h4>@ViewBag.Title</h4>
-<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/ ", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/ ", "Index", "Inspektims", new { SubjektId = Model.SubjektId }, null) <img src="~/Assets/content.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
+<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/ ", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/ ", "Details", "Subjekts", new { id = Model.Subjekt.Id }, null) <img src="~/Assets/content.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
 
 <div align="right">
     @Html.ActionLink("Shko Pas", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
@@ -43,14 +43,13 @@
         <dd style="padding-bottom: 20px">
             <h5>@Model.LlojiDokumentit.Count()</h5>
         </dd>
-
+        <div align="right">
+            @if (Model.LlojiDokumentit.Any())
+            {
+                @Html.ActionLink("Shkarko .zip", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
+            }
+        </div>
     </dl>
-    <div align="right">
-        @if (Model.LlojiDokumentit.Any())
-        {
-            @Html.ActionLink("Shkarko .zip File", "DownLoadZipFile", new { id = Model.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
-        }
-    </div>
 
     <table class="table">
         <tr>

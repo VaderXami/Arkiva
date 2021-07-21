@@ -48,6 +48,9 @@
                 @Html.DisplayNameFor(model => model.Inspektime.FirstOrDefault().Emri)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Inspektime.FirstOrDefault().NrInspektimit)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Inspektime.FirstOrDefault().Data)
             </th>
             <th></th>
@@ -59,6 +62,9 @@
                 <td>
                     <img src="~/Assets/folder.png" style="width: 30px; height: 30px" />
                     @Html.DisplayFor(modelItem => item.Emri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NrInspektimit)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data)
