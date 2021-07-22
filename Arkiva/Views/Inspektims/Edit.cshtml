@@ -30,7 +30,7 @@
         <div class="form-group">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrInspektimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NrInspektimit, new { htmlAttributes = new { @class = "form-control", maxlength = "35" } })
+                @Html.EditorFor(model => model.NrInspektimit, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NrInspektimit, "", new { @class = "text-danger" })
             </div>
         </div>
