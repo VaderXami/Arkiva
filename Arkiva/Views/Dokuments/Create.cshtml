@@ -9,12 +9,7 @@
 }
 
 <h4>@ViewBag.Title</h4>
-<div class="alert alert-success alert-dismissible fade in hide" role="alert" id="successId">
-    <strong>Dokumenti u ngarkua me sukses!</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+
 <div align="right">
     @Html.ActionLink("Anulo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
@@ -61,7 +56,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), disabled = "disabled", @readonly = "readonly" } })
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), disabled = "disabled", @readonly = "readonly" , @style = "text-align: right" } })
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -69,7 +64,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Zyra, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Zyra, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.Zyra, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
             @Html.ValidationMessageFor(model => model.Zyra, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -77,7 +72,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrKutis, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @type = "number" } })
+            @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
             @Html.ValidationMessageFor(model => model.NrKutis, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -85,7 +80,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Rafti, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
             @Html.ValidationMessageFor(model => model.Rafti, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -93,7 +88,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Indeksimi, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
             @Html.ValidationMessageFor(model => model.Indeksimi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -139,7 +134,6 @@
                 var inputVal = document.getElementById("getFile").value;
                 if (inputVal.length != 0) {
                     document.getElementById('alertId').classList.remove('hide');
-                    document.getElementById('successId').classList.remove('hide');
                     var node = document.createElement("h5");
                     var textnode = document.createTextNode("Dokumenti: " + document.getElementById("getFile").files[0].name);
                     node.appendChild(textnode);
@@ -168,7 +162,7 @@
 
     <div class="form-group" style="margin-bottom: 200px">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Shto" class="btn btn-success" , style="font-size: 12px" />
+            <input type="submit" value="Shto" class="btn btn-success" , style="font-size: 12px"/>
         </div>
     </div>
 </div>

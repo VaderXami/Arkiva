@@ -300,6 +300,7 @@ namespace Arkiva.Controllers
                         dokument.EmriLlojitDokumentit = emrat[3]; 
                         db.Dokument.Add(dokument);
                         db.SaveChanges();
+                        TempData["uploadMessage"] = "Dokumenti u ngarkua me sukses!";
                         return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
                     }
                 }
@@ -344,6 +345,7 @@ namespace Arkiva.Controllers
             Dokument dokument = db.Dokument.Find(id);
             db.Dokument.Remove(dokument);
             db.SaveChanges();
+            TempData["deleteMessage"] = "Dokumenti u fshi me sukses!";
             return RedirectToAction("Index", "Dokuments", new { dokument.LlojiDokumentitId });
         }
 

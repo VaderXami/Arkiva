@@ -23,7 +23,7 @@
         <div class="form-group">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Emri, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                @Html.EditorFor(model => model.Emri, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", maxlength = "35" } })
                 @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="form-group" style="padding-top: 10px">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off" } })
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @style = "text-align: right" } })
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
