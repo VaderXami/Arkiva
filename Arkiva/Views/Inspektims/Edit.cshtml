@@ -38,7 +38,7 @@
         <div class="form-group" style="padding-top: 10px">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @style = "text-align: right" } })
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @style = "text-align: right", @readonly = "true" } })
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
