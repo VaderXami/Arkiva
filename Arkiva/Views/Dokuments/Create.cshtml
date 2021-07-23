@@ -40,7 +40,7 @@
     <div class="form-group" style="padding-top: 10px">
         @Html.LabelFor(model => model.NrInspektuesit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.NrInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.NrInspektuesit, @readonly = "readonly", disabled = "disabled" } })
+            @Html.EditorFor(model => model.NrInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.NrInspektuesit, @readonly = "readonly", disabled = "disabled", @style = "text-align: right" } })
             @Html.ValidationMessageFor(model => model.NrInspektuesit, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), disabled = "disabled", @readonly = "readonly" , @style = "text-align: right" } })
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy"), disabled = "disabled", @readonly = "readonly" , @style = "text-align: right" } })
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -72,7 +72,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrKutis, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
             @Html.ValidationMessageFor(model => model.NrKutis, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -80,7 +80,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Rafti, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
             @Html.ValidationMessageFor(model => model.Rafti, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -88,7 +88,7 @@
     <div class="form-group" style="padding-top: 10px">
         <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Indeksimi, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" } })
             @Html.ValidationMessageFor(model => model.Indeksimi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -146,6 +146,20 @@
                     }
                 }
             };
+
+
+            function cleanFile()
+            {
+                var inputFile = document.getElementById("getFile").value;
+
+                if (inputFile.length != 0)
+                {
+                    document.getElementById("getFile").value = "";
+                    var c = document.getElementById("alertId").childElementCount;
+                    document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
+                    document.getElementById('alertId').classList.add('hide');
+                }
+            }
         </script>
         @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
     </div>
@@ -161,8 +175,9 @@
     </div>
 
     <div class="form-group" style="margin-bottom: 200px">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Shto" class="btn btn-success" , style="font-size: 12px"/>
+        <div class="col-md-offset-2 col-md-10" style="margin-bottom: 200px">
+            <input type="submit" value="Shto" class="btn btn-success" style="font-size: 12px" />
+            <input type="button" value="Fshi" class="btn btn-danger" style="font-size: 12px; margin-right:10px" onclick="cleanFile()">
         </div>
     </div>
 </div>
