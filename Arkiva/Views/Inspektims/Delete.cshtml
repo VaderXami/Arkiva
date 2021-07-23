@@ -5,24 +5,8 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/", "Delete", "Subjekts", new { id = Model.Subjekt.Id }, null) <img src="~/Assets/delete.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
 
-@if (Model.LlojiDokumentit.Any() == true)
-{
-    ViewBag.Numri = Model.LlojiDokumentit.Count();
-
-    if (ViewBag.Numri > 1)
-    {
-        ViewBag.Message = "Kujdes! Inspektimi përkatës i përket Subjektit " + Model.Subjekt.Emri + " dhe përmban " + ViewBag.Numri + " Dokumente. Dëshironi të procedoni me zgjedhjen?";
-    }
-    else
-    {
-        ViewBag.Message = "Kujdes! Inspektimi përkatës i përket Subjektit " + Model.Subjekt.Emri + " dhe përmban " + ViewBag.Numri + " Dokument. Dëshironi të procedoni me zgjedhjen?";
-    }
-
-}
-
-<h4 style="color: red; padding-top: 30px">@ViewBag.Message</h4>
+<h4 style="color: red; padding-top: 30px">A jeni të sigurt që dëshironi të fshini inspektimin e përzgjedhur?</h4>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

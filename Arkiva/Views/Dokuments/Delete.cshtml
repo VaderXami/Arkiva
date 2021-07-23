@@ -2,13 +2,11 @@
 
 @{
     ViewBag.Title = "Fshi Dokumentin!";
-    ViewBag.Message = "Kujdes! Ju po fshini dokumentin e Subjektit " + Model.LlojiDokumentit.Inspektim.Subjekt.Emri + " të cilit i përket institucionit Inspektues Shtetëror " + Model.LlojiDokumentit.Inspektim.Emri + ". Dëshironi te procedoni me zgjedhjen?";
 }
 
 <h2>@ViewBag.Title</h2>
-<h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.EmriSubjektit + "/", "Delete", "Subjekts", new { id = Model.LlojiDokumentit.Inspektim.Subjekt.Id }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.EmriInspektuesit + " " + Model.NrInspektuesit + "/", "Delete", "Inspektims", new { id = Model.LlojiDokumentit.Inspektim.Id }, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.EmriLlojitDokumentit + "/", "Delete", "LlojiDokumentits", new { id = Model.LlojiDokumentit.Id }, null) <img src="~/Assets/delete.png" style="width: 30px; height: 30px" /> @Model.FileName/</h4>
 
-<h4 style="color: red; padding-top: 30px">@ViewBag.Message</h4>
+<h4 style="color: red; padding-top: 30px">A jeni të sigurt që dëshironi të fshini dokumentin e përzgjedhur?</h4>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

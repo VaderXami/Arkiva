@@ -355,6 +355,14 @@
     <Compile Include="Migrations\202107220842114_initial.Designer.cs">
       <DependentUpon>202107220842114_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107230848597_datetime.cs" />
+    <Compile Include="Migrations\202107230848597_datetime.Designer.cs">
+      <DependentUpon>202107230848597_datetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107230906561_fixedtypos.cs" />
+    <Compile Include="Migrations\202107230906561_fixedtypos.Designer.cs">
+      <DependentUpon>202107230906561_fixedtypos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1288,6 +1296,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107220842114_initial.resx">
       <DependentUpon>202107220842114_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107230848597_datetime.resx">
+      <DependentUpon>202107230848597_datetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107230906561_fixedtypos.resx">
+      <DependentUpon>202107230906561_fixedtypos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

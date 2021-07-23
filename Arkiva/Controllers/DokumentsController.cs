@@ -292,7 +292,7 @@ namespace Arkiva.Controllers
                         Byte[] FileDet = Br.ReadBytes((Int32)str.Length);
                         dokument.FileName = Files.FileName;
                         dokument.FileContent = FileDet;
-                        dokument.Data = DateTime.Now;
+                        dokument.Data = DateTime.Now.Date;
                         string[] emrat = GetSubjektName(dokument.LlojiDokumentitId.ToString());
                         dokument.EmriSubjektit = emrat[0];
                         dokument.EmriInspektuesit = emrat[1];

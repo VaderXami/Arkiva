@@ -45,7 +45,7 @@ namespace Arkiva.Models
         public string EmriLlojitDokumentit { get; set; }
 
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         [Display(Name = "Emri Dokumentit")]
 
@@ -57,9 +57,9 @@ namespace Arkiva.Models
         public HttpPostedFileBase[] Files { get; set; }
 
         [Display(Name = "Zyra e Dokumentit")]
-        [MaxLength(35, ErrorMessage = "Emri Zyrës duhet të jetë deri në 35 karaktere.")]
+        [MaxLength(35, ErrorMessage = "Emri Zyrës duhet të jetë deri në 35 karaktere!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit!", AllowEmptyStrings = false)]
-        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit")]
+        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni fushën Zyra e Dokumentit!")]
         public string Zyra { get; set; }
 
         [Display(Name = "Nr. Kutisë")]
