@@ -208,18 +208,30 @@
             </td>
             <td align="left" width="250px" scope="row">
                 <div align="center">
-                    @{ if (item.FileName.Contains(".pdf"))
-                        {
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-                            <!--  <input type="button" class="btn btn-info" value="Shiko" onclick="window.open('@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })')" /> -->
-                            <div id="ex1" class="modal" style="margin-top: 100px; height: 700px">
-                                <embed src="@Url.Action("PreviewFilePDF", "Dokuments" , new { id = item.Id })" style="width: 100%; height: 100%" />
-                                <a href="#" rel="modal:close" class="btn btn-warning">Mbyll</a>
-                            </div>
+                    @{ 
+                        FileInfo fInfo = new FileInfo(item.FileName);
 
-                            <a type="button" href="#ex1" rel="modal:open" class="btn btn-info" style="font-size: 12px">Shiko</a>
+                        if (fInfo.Extension.Contains(".pdf"))
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px">Shiko</button>
+
+                            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="exampleModal" style="width: 100%; height: 100%; max-width: none; margin: 0">
+                                <div class="modal-dialog" role="document" style="width: 100%; height: 100%">
+                                    <div class="modal-content modal-lg" style="height: 900px" align="center">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: auto; overflow-x: auto">
+                                            <embed src="@Url.Action("PreviewFilePDF", "Dokuments", new { id = item.Id})" style="width: 100%; height: 100%" type="application/pdf" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Mbyll</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
                         if (item.FileName.Contains(".jpg"))
                         {
@@ -248,7 +260,7 @@
                             </div>
 
                         }
-                        if (item.FileName.Contains(".png") || item.FileName.Contains(".PNG"))
+                        if (fInfo.Extension.Contains(".png") || fInfo.Extension.Contains(".PNG"))
                         {
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" style="font-size: 12px">Shiko</button>
                             <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
