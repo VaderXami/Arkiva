@@ -224,7 +224,7 @@ namespace Arkiva.Controllers
         public ActionResult PreviewFilePNG(int id)
         {
             var dokument = db.Dokument.Find(id);
-            return PartialView(File(dokument.FileContent, "image/png"));
+            return File(dokument.FileContent, "image/png");
         }
         // GET: Dokuments/Create
         /**

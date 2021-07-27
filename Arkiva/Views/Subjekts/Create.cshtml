@@ -26,10 +26,11 @@
 
         <div class="form-group" style="padding-top: 10px">
             <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", @placeholder = "dd-mm-yyyy", autocomplete = "off", @style = "text-align: right", @readonly = "true" } })
-                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", @placeholder = "dd-mm-yyyy", autocomplete = "off", @style = "text-align: right", @id = "idDatePicker" } })
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger", @id = "messageValid" })
+            <span class="field-validation-error text-danger hide" data-valmsg-for="idDatePicker" data-valmsg-replace="true" id="errorMessage">Ju lutem, plotësoni fushën Data e Regjistrimit!</span>
+        </div>
         </div>
 
         <div class="form-group" style="padding-top: 30px">
@@ -91,6 +92,24 @@
                 });
             $(".datetype").datepicker({ dateFormat: 'dd-mm-yy' });
         });
+
+        document.getElementById("idDatePicker").onchange = function ()
+        {
+            var reg = /^(0[1-9]|[12][0-9]|3[01])[-/.]/;
+            var value = document.getElementById("idDatePicker").value;
+
+            if (!reg.test(value)) {
+                document.getElementById("messageValid").classList.add('hide');
+                document.getElementById("errorMessage").classList.remove('hide');
+            } else if (reg.test(value))
+            {
+                document.getElementById("errorMessage").classList.add('hide');
+                document.getElementById("messageValid").classList.add('hide');
+            }
+
+        }
+
+
     </script>
     <style>
         .ui-datepicker .ui-datepicker-title select {

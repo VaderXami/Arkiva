@@ -63,19 +63,16 @@ namespace Arkiva.Models
         public string Zyra { get; set; }
 
         [Display(Name = "Nr. Kutisë")]
-        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë!")]
         [RegularExpression(@"[0-9]*$", ErrorMessage = "Ju lutem, plotësoni fushën Nr. Kutisë me një numër të saktë!")]
         public int NrKutis { get; set; }
 
         [Display(Name = "Rafti Përkatës")]
-        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës!")]
         [RegularExpression(@"[0-9]*$", ErrorMessage = "Ju lutem, plotësoni fushën Rafti Përkatës me një numër të saktë!")]
         public int Rafti { get; set; }
 
         [Display(Name = "Fusha e Indeksimit")]
-        [Range(0, int.MaxValue, ErrorMessage = "Kapaciteti maksimal është 10 shifra!")]
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën e Indeksimit!")]
         [RegularExpression(@"[0-9]*$", ErrorMessage = "Ju lutem, plotësoni Fushën e Indeksimit me një numër të saktë!")]
         public int Indeksimi { get; set; }
