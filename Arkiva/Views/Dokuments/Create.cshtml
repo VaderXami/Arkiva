@@ -10,190 +10,188 @@
 
 <h4>@ViewBag.Title</h4>
 
-<link rel="stylesheet" href="~/Content/font-awesome.min.css"/>
+<link rel="stylesheet" href="~/Content/font-awesome.min.css" />
 
 <div align="right">
-    @Html.ActionLink("Anulo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+    @Html.ActionLink("Anullo", "Index", new { LlojiDokumentitId = lloji[1].AsInt() }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm("Create", "Dokuments", FormMethod.Post, new { @id = "registerFormId", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group" style="padding-top: 10px">
-        @Html.LabelFor(model => model.EmriSubjektit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.EmriSubjektit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriSubjektit, @readonly = "readonly", disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.EmriSubjektit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        @Html.LabelFor(model => model.EmriInspektuesit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.EmriInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriInspektuesit, @readonly = "readonly", disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.EmriInspektuesit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        @Html.LabelFor(model => model.NrInspektuesit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NrInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.NrInspektuesit, @readonly = "readonly", disabled = "disabled", @style = "text-align: right" } })
-            @Html.ValidationMessageFor(model => model.NrInspektuesit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        @Html.LabelFor(model => model.EmriLlojitDokumentit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.EmriLlojitDokumentit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriLlojitDokumentit, @readonly = "readonly", disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.EmriLlojitDokumentit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy"), disabled = "disabled", @readonly = "readonly", @style = "text-align: right" } })
-            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Zyra, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Zyra, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
-            @Html.ValidationMessageFor(model => model.Zyra, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrKutis, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
-            @Html.ValidationMessageFor(model => model.NrKutis, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Rafti, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
-            @Html.ValidationMessageFor(model => model.Rafti, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Indeksimi, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
-            @Html.ValidationMessageFor(model => model.Indeksimi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group" style="padding-top: 10px">
-        <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        <style>
-            .label1 {
-                background-color: black;
-                color: white;
-                padding: 0.5rem;
-                font-family: sans-serif;
-                border-radius: 0.3rem;
-                cursor: pointer;
-            }
-
-            .inputfile {
-                width: 0.1px;
-                height: 0.1px;
-                opacity: 0;
-                overflow: hidden;
-                position: absolute;
-                z-index: -1;
-            }
-
-                .inputfile:focus + label {
-                    outline: 1px dotted #000;
-                    outline: -webkit-focus-ring-color auto 5px;
-                }
-
-                .inputfile + label * {
-                    pointer-events: none;
-                }
-        </style>
-        <div class="form-inline">
-            <input type='file' id="getFile" name="Files" class="inputfile" required title="Ju lutem, ngarkoni dokumentin!">
-            <label for="getFile" class="label1">Ngarko Dokument</label>
-            <div class="alert alert-success fade in hide" role="alert" id="alertId" style="width: auto; margin-left: 20px; margin-top: 16px"></div>
-            <span class="btn hide in hide" onclick="cleanFile()" id="btnFshiId">
-                <i class="fa fa-times"></i>
-            </span>
-        </div>
-        <script>
-            document.getElementById('getFile').onchange = function () {
-                var inputVal = document.getElementById("getFile").value;
-                if (inputVal.length != 0) {
-                    document.getElementById('alertId').classList.remove('hide');
-                    document.getElementById('btnFshiId').classList.remove('hide');
-                    var node = document.createElement("h5");
-                    var textnode = document.createTextNode("Dokumenti: " + document.getElementById("getFile").files[0].name);
-                    node.appendChild(textnode);
-                    document.getElementById('alertId').appendChild(node);
-
-                    var c = document.getElementById("alertId").childElementCount;
-                    if (c > 1) {
-                        document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
-                    }
-                }
-            };
-
-            function cleanFile() {
-                var inputFile = document.getElementById("getFile").value;
-
-                if (inputFile.length != 0) {
-                    document.getElementById("getFile").value = "";
-                    var c = document.getElementById("alertId").childElementCount;
-                    document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
-                    document.getElementById('alertId').classList.add('hide');
-                    document.getElementById('btnFshiId').classList.add('hide');
-                }
-            }
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', (e) => {
-                    if (form.classList.contains('is-submitting')) {
-                        e.preventDefault();
-                    }
-                    if (document.getElementById("getFile").value != 0)
-                    {
-                        form.classList.add('is-submitting');
-                    }
-                });
-            });
-        </script>
-        @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
-    </div>
-        @ViewBag.FileStatus
-    </div>
-
-    <div class="form-group" style="display: none">
-        @Html.LabelFor(model => model.LlojiDokumentitId, "LlojiDokumentitId", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
-        <div class="col-md-10">
-            @Html.DropDownList("LlojiDokumentitId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LlojiDokumentitId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <form>
-        <div class="form-group" style="margin-bottom: 200px">
-            <div class="col-md-offset-2 col-md-10" style="margin-bottom: 200px">
-                <input type="submit" value="Shto" class="btn btn-success" style="font-size: 12px" id="buttonSubmit" />
+        <div class="form-group" style="padding-top: 10px">
+            @Html.LabelFor(model => model.EmriSubjektit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmriSubjektit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriSubjektit, @readonly = "readonly", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.EmriSubjektit, "", new { @class = "text-danger" })
             </div>
         </div>
-    </form>
-</div>
+
+        <div class="form-group" style="padding-top: 10px">
+            @Html.LabelFor(model => model.EmriInspektuesit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmriInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriInspektuesit, @readonly = "readonly", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.EmriInspektuesit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            @Html.LabelFor(model => model.NrInspektuesit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NrInspektuesit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.NrInspektuesit, @readonly = "readonly", disabled = "disabled", @style = "text-align: right" } })
+                @Html.ValidationMessageFor(model => model.NrInspektuesit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            @Html.LabelFor(model => model.EmriLlojitDokumentit, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmriLlojitDokumentit, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EmriLlojitDokumentit, @readonly = "readonly", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.EmriLlojitDokumentit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy"), disabled = "disabled", @readonly = "readonly", @style = "text-align: right" } })
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Zyra, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Zyra, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", maxlength = "35" } })
+                @Html.ValidationMessageFor(model => model.Zyra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.NrKutis, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NrKutis, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
+                @Html.ValidationMessageFor(model => model.NrKutis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Rafti, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rafti, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
+                @Html.ValidationMessageFor(model => model.Rafti, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Indeksimi, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Indeksimi, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @style = "text-align: right", @pattern = @"\d*", @maxlength = "10", oninput = "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); validity.valid||(value='');", min = 0 } })
+                @Html.ValidationMessageFor(model => model.Indeksimi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <span style="color:#ff0000">*</span> @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <style>
+                    .label1 {
+                        background-color: black;
+                        color: white;
+                        padding: 0.5rem;
+                        font-family: sans-serif;
+                        border-radius: 0.3rem;
+                        cursor: pointer;
+                    }
+
+                    .inputfile {
+                        width: 0.1px;
+                        height: 0.1px;
+                        opacity: 0;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: -1;
+                    }
+
+                        .inputfile:focus + label {
+                            outline: 1px dotted #000;
+                            outline: -webkit-focus-ring-color auto 5px;
+                        }
+
+                        .inputfile + label * {
+                            pointer-events: none;
+                        }
+                </style>
+                <div class="form-inline">
+                    <input type='file' id="getFile" name="Files" class="inputfile" required title="Ju lutem, ngarkoni dokumentin!">
+                    <label for="getFile" class="label1">Ngarko Dokument</label>
+                    <div class="alert alert-success fade in hide" role="alert" id="alertId" style="width: auto; margin-left: 20px; margin-top: 16px"></div>
+                    <span class="btn hide in hide" onclick="cleanFile()" id="btnFshiId">
+                        <i class="fa fa-times"></i>
+                    </span>
+                </div>
+                <script>
+                    document.getElementById('getFile').onchange = function () {
+                        var inputVal = document.getElementById("getFile").value;
+                        if (inputVal.length != 0) {
+                            document.getElementById('alertId').classList.remove('hide');
+                            document.getElementById('btnFshiId').classList.remove('hide');
+                            var node = document.createElement("h5");
+                            var textnode = document.createTextNode("Dokumenti: " + document.getElementById("getFile").files[0].name);
+                            node.appendChild(textnode);
+                            document.getElementById('alertId').appendChild(node);
+
+                            var c = document.getElementById("alertId").childElementCount;
+                            if (c > 1) {
+                                document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
+                            }
+                        }
+                    };
+
+                    function cleanFile() {
+                        var inputFile = document.getElementById("getFile").value;
+
+                        if (inputFile.length != 0) {
+                            document.getElementById("getFile").value = "";
+                            document.getElementById("alertId").removeChild(document.getElementById("alertId").children[0]);
+                            document.getElementById('alertId').classList.add('hide');
+                            document.getElementById('btnFshiId').classList.add('hide');
+                        }
+                    }
+                    document.querySelectorAll('form').forEach(form => {
+                        form.addEventListener('submit', (e) => {
+                            if (form.classList.contains('is-submitting')) {
+                                e.preventDefault();
+                            }
+                            if (document.getElementById("getFile").value != 0) {
+                                form.classList.add('is-submitting');
+                            }
+                        });
+                    });
+                </script>
+                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+            </div>
+            @ViewBag.FileStatus
+        </div>
+
+        <div class="form-group" style="display: none">
+            @Html.LabelFor(model => model.LlojiDokumentitId, "LlojiDokumentitId", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size: 15px " })
+            <div class="col-md-10">
+                @Html.DropDownList("LlojiDokumentitId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LlojiDokumentitId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <form>
+            <div class="form-group" style="margin-bottom: 200px">
+                <div class="col-md-offset-2 col-md-10" style="margin-bottom: 200px">
+                    <input type="submit" value="Shto" class="btn btn-success" style="font-size: 12px" id="buttonSubmit" />
+                </div>
+            </div>
+        </form>
+    </div>
 }

@@ -8,7 +8,7 @@
 <h4><img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink("Subjektet e Regjistruara" + "/ ", "Index", "Subjekts", null, null) <img src="~/Assets/folder.png" style="width: 30px; height: 30px" /> @Html.ActionLink(Model.Subjekt.Emri + "/", "Edit", "Subjekts", new { id = Model.Subjekt.Id }, null) <img src="~/Assets/settings.png" style="width: 30px; height: 30px" /> @Model.Emri @Model.NrInspektimit/</h4>
 
 <div align="right">
-    @Html.ActionLink("Anulo Modifikim", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
+    @Html.ActionLink("Anullo Modifikim", "Index", new { SubjektId = Model.SubjektId }, new { @class = "btn btn-warning", @style = "font-size: 12px" })
 </div>
 
 @using (Html.BeginForm())
@@ -40,7 +40,7 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "datepicker form-control", autocomplete = "off", @style = "text-align: right", @id = "idDatePicker" } })
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger", @id = "messageValid" })
-            <span class="field-validation-error text-danger hide" data-valmsg-for="idDatePicker" data-valmsg-replace="true" id="errorMessage">Ju lutem, plotësoni fushën Data e Regjistrimit!</span>
+            <span class="field-validation-error text-danger hide" data-valmsg-for="idDatePicker" data-valmsg-replace="true" id="errorMessage">Ju lutem, plotësoni fushën Data e Kontrollit me një datë të saktë!</span>
         </div>
         </div>
 
@@ -88,7 +88,7 @@
                 yearSuffix: '',
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: "dd-mm-yy"
+                dateFormat: "dd/mm/yy"
             });
         });
 
@@ -100,14 +100,14 @@
                     }
                     var valid = true;
                     try {
-                        $.datepicker.parseDate('dd-mm-yy', value);
+                        $.datepicker.parseDate('dd/mm/yy', value);
                     }
                     catch (err) {
                         valid = false;
                     }
                     return valid;
                 });
-            $(".datetype").datepicker({ dateFormat: 'dd-mm-yy' });
+            $(".datetype").datepicker({ dateFormat: 'dd/mm/yy' });
         });
 
         document.getElementById("idDatePicker").onchange = function () {

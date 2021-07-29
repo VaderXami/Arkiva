@@ -371,6 +371,10 @@
     <Compile Include="Migrations\202107261115216_modelschanged1.Designer.cs">
       <DependentUpon>202107261115216_modelschanged1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107291011313_init.cs" />
+    <Compile Include="Migrations\202107291011313_init.Designer.cs">
+      <DependentUpon>202107291011313_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArkivaDBContext.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -1316,6 +1320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107261115216_modelschanged1.resx">
       <DependentUpon>202107261115216_modelschanged1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107291011313_init.resx">
+      <DependentUpon>202107291011313_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

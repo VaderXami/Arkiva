@@ -11,12 +11,12 @@ namespace Arkiva.Models
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!", AllowEmptyStrings = false)]
         [Display(Name = "Lloji i Dokumentit")]
         [MaxLength(35, ErrorMessage = "Emri i Llojit te Dokumentit duhet të jetë deri në 35 karaktere.")]
-        [RegularExpression(@"^(?![\s.]+$)[a-zA-Z\s.]*$", ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!")]
+        [RegularExpression(@"^(?!^ +$)^.+$", ErrorMessage = "Ju lutem, plotësoni fushën Lloji i Dokumentit!")]
         public string Emri { get; set; }
 
         [Required(ErrorMessage = "Ju lutem, plotësoni fushën Data e Regjistrimit!")]
         [Display(Name = "Data e Regjistrimit")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         public int InspektimId { get; set; }
         public virtual Inspektim Inspektim { get; set; }

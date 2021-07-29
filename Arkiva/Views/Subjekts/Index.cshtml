@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Arkiva.Models.Subjekt>
 
 @{
-    ViewBag.Title = "Subjektet e Regjistruara ";
+    ViewBag.Title = "Lista e Subjekteve";
 }
 
 
@@ -73,7 +73,7 @@
                     @Html.ActionLink("Përmbajtja", "Details", new { id = item.Id }, new { @class = "btn btn-info", @style = "font-size: 12px" })
                     @Html.ActionLink("Fshi", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", @style = "font-size: 12px" })
                 </td>
-                <td style="padding-top: 15px; padding-left: 30px">
+                <td style="padding-top: 15px; padding-left: 30px"> 
                     @Html.DisplayFor(modelItem => item.Data)
                 </td>
 
